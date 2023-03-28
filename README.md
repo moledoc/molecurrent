@@ -5,7 +5,7 @@ as root
 
 ```{.sh}
 su -c "
-apt install -y xorg build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3
+apt install -y xorg build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc gnome-backgrounds feh spacefm-gtk3
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
@@ -13,20 +13,30 @@ rm go1.20.2.linux-amd64.tar.gz
 "
 
 printf "
+xrdb .Xresources
 plumber &
+feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 openbox-session
 " >> .xinitrc
 
-printf "xterm*faceName: DejaVuSansMono
-xterm*faceSize: 12" >> .Xresources
+printf "
+xterm*faceName: DejaVuSansMono
+xterm*faceSize: 12
+" >> .Xresources
 
 cd $HOME
 git clone https://github.com/9fans/plan9port.git plan9
 cd plan9
 ./INSTALL
-printf "PLAN9=\$HOME/plan9
-PATH=\$PATH:\$PLAN9/bin" >> .profile
+printf "
+PLAN9=\$HOME/plan9
+PATH=\$PATH:\$PLAN9/bin
+" >> .profile
 cd $HOME
+
+printf "
+setxkbmap -option \"caps:swapescape\" us
+" >> .profile
 
 git clone https://github.com/9fans/go.git 9fansgo
 cd 9fansgo/acme/acmego; go install; cd -
