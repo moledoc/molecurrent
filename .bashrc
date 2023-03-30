@@ -6,7 +6,10 @@ alias pgrep="pgrep --color=none"
 alias egrep="egrep --color=none"
 alias fgrep="fgrep --color=none"
 
-alias acme="acme -f /mnt/font/DejaVuSans/14a/font -m /mnt/acme; acmego &"
+# if acmego doesn't start, try these commands
+# chmod 777 /mnt/acme /mnt/font
+# 9 mount `namespace`/acme /mnt/acme9
+alias acme="acme -f /mnt/font/DejaVuSans/14a/font -m /mnt/acme &; sleep 5 && acmego &"
 
 branch(){
         git branch 2> /dev/null 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
