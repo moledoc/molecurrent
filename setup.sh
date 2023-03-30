@@ -1,7 +1,16 @@
 #!/bin/sh
 
-su -c "
-apt install -y xorg build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds mate-backgrounds feh dunst i3lock
+read -s -p "Root Password:" ROOT_PASSWORD
+
+root_call(){
+	su <<! >/dev/null 2>&1
+	$1
+	ROOT_PASSWORD
+	!
+}
+
+root_call "apt install -y xorg build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds mate-backgrounds feh libnotify-bin i3lock"
+#su -c "
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
@@ -17,7 +26,7 @@ go install $HOME/9fansgo/acme/Watch
 go install github.com/google/codesearch/cmd/...@latest
 cindex $HOME/go/src /usr/local/go
 
-su -c "ln -s $(pwd)/bin/* /usr/local/bin/"
+root_call "ln -s $(pwd)/bin/* /usr/local/bin/"
 
 git config --global color.ui false
 git config --global user.name "meelis utt"
@@ -34,4 +43,9 @@ mkdir -p $HOME/.config/sxhkd
 ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
 ln -s $(pwd)/.config/sxhkd/* $HOME/.config/sxhkd/
 
-su -c "systemctl reboot"
+root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/backlight/intel_backlight/brightness"
+
+
+(crontab -l; printf "*/5 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) low-battery.sh\n") | crontab -
+
+root_call "chmod 4550 /usr/sbin/reboot /usr/sbin/shutdown"

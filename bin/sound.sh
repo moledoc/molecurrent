@@ -1,9 +1,6 @@
 #!/bin/sh
 # changeVolume
 
-# Arbitrary but unique message tag
-msgTag="myvolume"
-
 # Change the volume using alsa
 amixer -q set Master "$@"
 status=$(amixer get Master | tail -1)
@@ -14,6 +11,6 @@ volume="$(echo $status | grep -oE --color=none '[0-9]{1,3}%')"
 mute="$(echo $status |  grep -oE --color=none '\[[onf]{1,3}' | tr -d '[')"
 test $volume = 0 -o "$mute" = "off" && \
 	# Show the sound muted notification
-	dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted"  || \
+	notify-send -u low "Volume muted"  || \
 	# Show the volume notification
-	dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$msgTag -h int:value:"$volume" "Volume: ${volume}"
+	notify-send -u low "Volume: ${volume}"
