@@ -41,25 +41,25 @@ printf "#\!/bin/sh
 search=\$1
 test -n \$search && search=\$(cat -)
 9 grep -i -n '^func (\([^)]+\) )?'\$search'\(' *.go /dev/null
-" > /usr/local/bin/c
+" > bin/c
 
 printf "#\!/bin/sh
 search=\$1
 test -n \$search && search=\$(cat -)
 csearch -n -f '\.go\$' '^func (\([^)]+\) )?'\$search'\('
-" > /usr/local/bin/cf
+" > bin/cf
 
 printf "#\!/bin/sh
 search=\$1
 test -n \$search && search=\$(cat -)
 9 grep -i -n '^type '\$search' ' *.go /dev/null
-" > /usr/local/bin/t
+" > bin/t
 
 printf "#\!/bin/sh
 search=\$1
 test -n \$search && search=\$(cat -)
 csearch -n -f '\.go\$' '^type '\$seach
-" > /usr/local/bin/ct
+" > bin/ct
 
 chmod +x /usr/local/bin/f /usr/local/bin/cf /usr/local/bin/c /usr/local/bin/ct
 

@@ -1,0 +1,4 @@
+#!/bin/sh
+search=$1
+test -z $search && search=$(cat -)
+csearch -n -f '\.go$' '^type '$seach
