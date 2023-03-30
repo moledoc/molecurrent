@@ -20,5 +20,4 @@ PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(branch)\$ '
 
 PLAN9=$HOME/plan9
 PATH=$PATH:$HOME/go/bin:$PLAN9/bin
-setxkbmap -option "caps:swapescape" us
 

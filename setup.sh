@@ -17,7 +17,7 @@ go install $HOME/9fansgo/acme/Watch
 go install github.com/google/codesearch/cmd/...@latest
 cindex $HOME/go/src /usr/local/go
 
-su -c "ln -s bin/* /usr/local/bin/"
+su -c "ln -s $(pwd)/bin/* /usr/local/bin/"
 
 git config --global color.ui false
 git config --global user.name "meelis utt"
@@ -26,10 +26,12 @@ git config --global user.email "meelis.utt@gmail.com"
 ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
 
 mv $HOME/.bashrc $HOME/.bashrc_orig
-ln -s ./.bashrc $HOME/.bashrc
-ln -s ./.bash_profile $HOME/.bash_profile
+ln -s $(pwd)/.bashrc $HOME/.bashrc
+ln -s $(pwd)/.bash_profile $HOME/.bash_profile
 
 mkdir -p $HOME/.config/openbox
-ln -s ./.config/openbox/* $HOME/.config/openbox/
+mkdir -p $HOME/.config/sxhkd
+ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
+ln -s $(pwd)/.config/sxhkd/* $HOME/.config/sxhkd/
 
 su -c "systemctl reboot"
