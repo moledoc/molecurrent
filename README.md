@@ -102,19 +102,15 @@ su -c "systemctl reboot"
 
 ```
 
-to log out, use `openbox --exit`
 
 # TODO:
 
 * openbox menu system
-
 * ~~wifi~~ wpa_gui
-* logout
-* login screen
-* sound
-* language input
-* battery
-* datetime
-* runlauncher
-* (panel)
+* ~~logout~~ openbox --exit
+	* to log out, use `openbox --exit`
+* ~~login screen~~ startx in .bash_profile
+* bluetooth
+* runlauncher(?) see if necessary
 * mounting
+* datetime, sound, brightness, battery - handled by scripts

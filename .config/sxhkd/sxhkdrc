@@ -1,0 +1,36 @@
+# sound: superuser.com/questions/1577281/xev-not-detecting-media-keys
+XF86AudioMute
+	dunstify-sound.sh "toggle"
+XF86AudioRaiseVolume
+	dunstify-sound.sh "5%+"
+XF86AudioLowerVolume
+	dunstify-sound.sh "5%-"
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioNext
+	playerctl next
+XF86AudioPrev
+	playerctl previous
+
+# duplicate for use on keyboard w/o media keys. xdotools didn't work
+shift + XF86AudioMute
+	playerctl play-pause
+shift + XF86AudioRaiseVolume
+	playerctl next
+shift + XF86AudioLowerVolume
+	playerctl previous
+
+# brightness
+XF86MonBrightnessUp
+	dunstify-brightness.sh "+$BRIGHTNESS_STEP"
+XF86MonBrightnessDown
+	dunstify-brightness.sh "-$BRIGHTNESS_STEP"
+# langs
+super + space
+	toggle-lang.sh
+# restart sxhkd
+super + shift + r
+	sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd &
+# show datetime
+alt + d
+	dunstify-datetime.sh

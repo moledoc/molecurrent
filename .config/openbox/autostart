@@ -1,3 +1,5 @@
 setxkbmap -option "caps:swapescape" us
-plumber &
 feh --recursive --bg-fill --randomize /usr/share/backgrounds
+plumber &
+sxhkd &
+dunst &
