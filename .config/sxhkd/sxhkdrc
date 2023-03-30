@@ -34,3 +34,7 @@ super + shift + r
 # show datetime
 alt + d
 	dunstify-datetime.sh
+super + l
+	 i3lock --image=$(find /usr/share/backgrounds/ -name "*.png" | shuf | head -n 1)	
+
+
