@@ -114,3 +114,4 @@ su -c "systemctl reboot"
 * bluetooth
 * runlauncher(?) see if necessary
 * mounting
+* microphone/camera for video calls

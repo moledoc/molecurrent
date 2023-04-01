@@ -1,3 +1,4 @@
-feh --recursive --bg-fill --randomize /usr/share/backgrounds
+feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 plumber &
 sxhkd &
+/usr/lib/notification-daemon/notification-daemon &

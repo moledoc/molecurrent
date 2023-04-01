@@ -42,16 +42,16 @@
     <action name="Exit" />
   </item>
   <item label="Restart">
-    <action name="Execute"><execute>/usr/sbin/reboot</execute></action>
+    <action name="Execute">
+         <prompt>Are you sure you want to reboot?</prompt>
+         <execute>/usr/sbin/reboot</execute>
+    </action>
   </item>
   <item label="Shutdown">
-    <action name="Execute"><execute>/usr/sbin/shutdown</execute></action>
+    <action name="Execute">
+         <prompt>Are you sure you want to shutdown?</prompt>
+         <execute>/usr/sbin/shutdown now</execute>
+    </action>
   </item>
-  <menu
-     id="ID"
-     label="TITLE"
-     execute=$(printf "<openbox_pipe_menu>\n"; for i in 1,2,3; do echo "<item label=\"LABEL \"</item>;";printf "</openbox_pipe_menu>")
-  />
 </menu>
-
 </openbox_menu>
