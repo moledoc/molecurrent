@@ -1,19 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 
-read -s -p "Root Password:" ROOT_PASSWORD
+read -s -p "Root Password: " ROOT_PASSWORD
 
 root_call(){
-	su <<! >/dev/null 2>&1
-	$1
-	ROOT_PASSWORD
-	!
+	printf "$ROOT_PASSWORD" | su -c "$1"
 }
 
 root_call "apt install -y xorg build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin i3lock"
-#su -c "
+
+git clone https://github.com/moledoc/molecurrent.git
+cd molecurrent
+git remote set-url origin git@github.com:moledoc/molecurrent.git
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz
+root_call "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz"
 rm go1.20.2.linux-amd64.tar.gz
 
 git clone https://github.com/9fans/plan9port.git $HOME/plan9
@@ -49,4 +49,5 @@ root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/ba
 (crontab -l; printf "*/5 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) low-battery.sh\n") | crontab -
 
 root_call "chmod 777 /usr/sbin/reboot /usr/sbin/shutdown"
-./usr/sbin/reboot
+
+/usr/sbin/reboot
