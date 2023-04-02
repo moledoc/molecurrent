@@ -6,10 +6,11 @@ root_call(){
 	printf "$ROOT_PASSWORD" | su -c "$1"
 }
 
-root_call "apt install -y xorg build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin i3lock"
+root_call "apt install -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin i3lock"
 
 git clone https://github.com/moledoc/molecurrent.git
 cd molecurrent
+git checkout from-vm # TODO: remove once merged to main
 git remote set-url origin git@github.com:moledoc/molecurrent.git
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
