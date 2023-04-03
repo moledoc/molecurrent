@@ -37,4 +37,6 @@ alt + d
 super + l
 	 i3lock --image=$(find /usr/share/backgrounds/ -name "*.png" | shuf | head -n 1)	
 
+Print
+	 flameshot launcher
 

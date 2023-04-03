@@ -18,6 +18,9 @@
   <item label="Files">
     <action name="Execute"><execute>spacefm</execute></action>
   </item>
+  <item label="Screenshot">
+    <action name="Execute"><execute>flameshot launcher</execute></action>
+  </item>
   <!-- This requires the presence of the 'obamenu' package to work -->
   <separator />
   <item label="Datetime">
