@@ -18,7 +18,7 @@ root_call "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.t
 rm go1.20.2.linux-amd64.tar.gz
 
 git clone https://github.com/9fans/plan9port.git $HOME/plan9
-./plan9/INSTALL
+cd $HOME/plan9; ./INSTALL; cd -
 
 git clone https://github.com/9fans/go.git $HOME/9fansgo
 go install $HOME/9fansgo/acme/acmego
@@ -38,6 +38,8 @@ ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
 mv $HOME/.bashrc $HOME/.bashrc_orig
 ln -s $(pwd)/.bashrc $HOME/.bashrc
 ln -s $(pwd)/.bash_profile $HOME/.bash_profile
+ln -s $(pwd).xinitrc /home/test/.xinitrc
+ln -s $(pwd).Xresources /home/test/.Xresources
 
 mkdir -p $HOME/.config/openbox
 mkdir -p $HOME/.config/sxhkd
