@@ -15,6 +15,19 @@ wget https://raw.githubusercontent.com/moledoc/molecurrent/from-vm/setup.bash
 
 ## Programs
 
+* qpdfview - pdf viewrs
+* flameshot - screenshots
+* vlc - media player
+* sxhkd - keyboard shortcuts
+* notify-send - notifications
+* window manager - openbox
+* web browser - chromium
+* text editor - acme/vi
+* terminal - xterm
+* file manager - spacefm
+* image viewer - feh (also sets the background)
+* lockscreen - i3lock
+
 
 # TODO:
 

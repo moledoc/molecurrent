@@ -44,6 +44,11 @@
     <action name="Restart" />
   </item>
   <separator />
+  <item label="Lock">
+    <action name="Execute">
+         <execute>xdotool key super+l</execute>
+    </action>
+  </item>
   <item label="Logout">
     <action name="Exit" />
   </item>
