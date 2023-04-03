@@ -26,10 +26,10 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	brightness.sh "-$BRIGHTNESS_STEP"
 # langs
-super + space
+super + shift
 	toggle-lang.sh
 # restart sxhkd
-super + shift + r
+ctrl + alt + r
 	sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd &
 # show datetime
 alt + d

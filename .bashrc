@@ -1,5 +1,6 @@
 alias ls="ls --color=none -F"
 alias dir="dir --color=none -F"
+alias dirs="dirs -l -p"
 alias vdir="vdir --color=none -F"
 alias grep="grep --color=none"
 alias pgrep="pgrep --color=none"
@@ -20,3 +21,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(branch)\$ '
+pushd -n $HOME > /dev/null
+pushd -n $HOME/go/src > /dev/null
+pushd -n $HOME/go/src/github.com > /dev/null
+pushd -n $HOME/go/src/github.com/moledoc > /dev/null
