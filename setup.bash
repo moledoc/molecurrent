@@ -38,8 +38,8 @@ ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
 mv $HOME/.bashrc $HOME/.bashrc_orig
 ln -s $(pwd)/.bashrc $HOME/.bashrc
 ln -s $(pwd)/.bash_profile $HOME/.bash_profile
-ln -s $(pwd).xinitrc /home/test/.xinitrc
-ln -s $(pwd).Xresources /home/test/.Xresources
+ln -s $(pwd)/.xinitrc $HOME/.xinitrc
+ln -s $(pwd)/.Xresources $HOME/.Xresources
 
 mkdir -p $HOME/.config/openbox
 mkdir -p $HOME/.config/sxhkd
