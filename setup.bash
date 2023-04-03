@@ -54,4 +54,5 @@ root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/ba
 
 root_call "chmod 777 /usr/sbin/reboot /usr/sbin/shutdown"
 
+rm $HOME/setup.bash
 /usr/sbin/reboot

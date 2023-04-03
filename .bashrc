@@ -1,11 +1,7 @@
-alias ls="ls --color=none -F"
-alias dir="dir --color=none -F"
+alias ls="ls -F"
+alias dir="dir -F"
 alias dirs="dirs -l -p"
-alias vdir="vdir --color=none -F"
-alias grep="grep --color=none"
-alias pgrep="pgrep --color=none"
-alias egrep="egrep --color=none"
-alias fgrep="fgrep --color=none"
+alias vdir="vdir -F"
 
 # if acmego doesn't start, try these commands
 # chmod 777 /mnt/acme /mnt/font
