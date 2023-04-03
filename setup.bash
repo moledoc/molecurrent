@@ -45,6 +45,7 @@ mkdir -p $HOME/.config/openbox
 mkdir -p $HOME/.config/sxhkd
 ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
 ln -s $(pwd)/.config/sxhkd/* $HOME/.config/sxhkd/
+ln -s $(pwd)/.config/qpdfview/* $HOME/.config/qpdfview/
 
 root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/backlight/intel_backlight/brightness"
 
