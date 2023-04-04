@@ -6,9 +6,11 @@ This particular setup is mouse-based: openbox, acme
 
 ## setup 
 
+**NB!** If any problems with wifi, check the help sections below.
 
 ```{.sh}
 wget https://raw.githubusercontent.com/moledoc/molecurrent/from-vm/setup.bash
+chmod +x setup.bash
 ./setup.bash
 ```
 
