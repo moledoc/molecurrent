@@ -1,0 +1,8 @@
+6c6
+< 	[INIT] =   "black",     /* after initialization */
+---
+> 	[INIT] =   "#787878",     /* after initialization */
+12c12
+< static const int failonclear = 1;
+---
+> static const int failonclear = 0;

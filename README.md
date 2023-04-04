@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/moledoc/molecurrent/from-vm/setup.bash
 * terminal - xterm
 * file manager - spacefm
 * image viewer - feh (also sets the background)
-* lockscreen - i3lock
+* lockscreen - patched slock (patch in `.patches`)
 
 
 # TODO:
