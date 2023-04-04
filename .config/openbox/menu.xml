@@ -27,7 +27,7 @@
     <action name="Execute"><execute>datetime.sh</execute></action>
   </item>
   <item label="Battery">
-    <action name="Execute"><execute>low-battery.sh</execute></action>
+    <action name="Execute"><execute>battery.sh</execute></action>
   </item>
   <separator />
   <menu id="/Debian" />
