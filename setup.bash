@@ -7,6 +7,7 @@ root_call(){
 }
 
 root_call "apt install -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin qpdfview flameshot xdotool libxrandr-dev xautolock mc"
+# texlive-full pandoc
 
 git clone https://github.com/moledoc/molecurrent.git
 cd molecurrent
