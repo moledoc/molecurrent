@@ -1,4 +1,5 @@
 feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 plumber &
 sxhkd &
+xautolock -time 10 -locker slock &
 /usr/lib/notification-daemon/notification-daemon &
