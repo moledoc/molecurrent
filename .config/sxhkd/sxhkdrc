@@ -12,7 +12,7 @@ XF86AudioNext
 XF86AudioPrev
 	playerctl previous
 
-# duplicate for use on keyboard w/o media keys. xdotools didn't work
+# duplicate for use on keyboard w/o media keys
 shift + XF86AudioMute
 	playerctl play-pause
 shift + XF86AudioRaiseVolume
@@ -25,18 +25,36 @@ XF86MonBrightnessUp
 	brightness.sh "+$BRIGHTNESS_STEP"
 XF86MonBrightnessDown
 	brightness.sh "-$BRIGHTNESS_STEP"
+
 # langs
 super + shift
 	toggle-lang.sh
-# restart sxhkd
-ctrl + alt + r
-	sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd &
+
 # show datetime
 alt + d
 	datetime.sh
+
+# lock screen
 super + l
 	 slock
 
+# screenshot
 Print
 	 flameshot launcher
 
+
+# restart sxhkd
+ctrl + alt + k + r
+	sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd &
+
+# logout
+ctrl + alt + o + l
+	openbox --exit	
+
+# reboot
+ctrl + alt + s + r
+	reboot
+
+# shutdown
+ctrl + alt + s + q
+	shutdown now
