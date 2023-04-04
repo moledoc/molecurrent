@@ -27,7 +27,7 @@ XF86MonBrightnessDown
 	brightness.sh "-$BRIGHTNESS_STEP"
 
 # langs
-super + shift
+super + space
 	toggle-lang.sh
 
 # show datetime
