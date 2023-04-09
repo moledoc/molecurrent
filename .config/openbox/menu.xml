@@ -12,11 +12,14 @@
   <item label="Web browser">
     <action name="Execute"><execute>x-www-browser</execute></action>
   </item>
-  <item label="Acme">
-    <action name="Execute"><execute>start-acme.sh</execute></action>
-  </item>
   <item label="Files">
     <action name="Execute"><execute>spacefm</execute></action>
+  </item>
+  <item label="Mail">
+    <action name="Execute"><execute>thunderbird</execute></action>
+  </item>
+  <item label="Acme">
+    <action name="Execute"><execute>start-acme.sh</execute></action>
   </item>
   <item label="Screenshot">
     <action name="Execute"><execute>flameshot launcher</execute></action>
