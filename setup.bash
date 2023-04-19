@@ -11,6 +11,7 @@ root_call "apt install -y xorg xterm build-essential libx11-dev libxt-dev libfon
 
 git clone https://github.com/moledoc/molecurrent.git
 cd molecurrent
+molecurrent_path=$(pwd)
 git checkout from-vm # TODO: remove once merged to main
 git remote set-url origin git@github.com:moledoc/molecurrent.git
 
@@ -23,6 +24,7 @@ rm go1.20.2.linux-amd64.tar.gz
 
 git clone https://github.com/9fans/plan9port.git $HOME/plan9
 cd $HOME/plan9; ./INSTALL; cd -
+cd $HOME/plan9/bin; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
 
 git clone https://github.com/9fans/go.git $HOME/9fansgo
 go install $HOME/9fansgo/acme/acmego

@@ -1,0 +1,8 @@
+20c20
+< 	case "${BROWSER:=firefox}" in
+---
+> 	case "${BROWSER}" in
+38a39,41
+> 		;;
+> 	*)
+> 		firefox "$@"
