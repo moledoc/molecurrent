@@ -6,8 +6,9 @@ root_call(){
 	printf "$ROOT_PASSWORD" | su -c "$1"
 }
 
-root_call "apt install -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium sxhkd fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird"
+root_call "apt update && apt upgrade && apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium sxhkd fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird"
 # texlive-full pandoc
+read -p "Press enter to continue"
 
 git clone https://github.com/moledoc/molecurrent.git
 cd molecurrent
@@ -27,10 +28,10 @@ cd $HOME/plan9; ./INSTALL; cd -
 cd $HOME/plan9/bin; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
 
 git clone https://github.com/9fans/go.git $HOME/9fansgo
-go install $HOME/9fansgo/acme/acmego
-go install $HOME/9fansgo/acme/Watch
+/usr/local/go/bin/go install $HOME/9fansgo/acme/acmego
+/usr/local/go/bin/go install $HOME/9fansgo/acme/Watch
 
-go install github.com/google/codesearch/cmd/...@latest
+/usr/local/go/bin/go install github.com/google/codesearch/cmd/...@latest
 cindex $HOME/go/src /usr/local/go
 
 root_call "ln -s $(pwd)/bin/* /usr/local/bin/"
@@ -38,6 +39,7 @@ root_call "ln -s $(pwd)/bin/* /usr/local/bin/"
 git config --global color.ui false
 git config --global user.name "meelis utt"
 git config --global user.email "meelis.utt@gmail.com"
+read -p "Press enter to continue"
 
 ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
 
@@ -49,12 +51,12 @@ ln -s $(pwd)/.Xresources $HOME/.Xresources
 
 mkdir -p $HOME/.config/openbox
 mkdir -p $HOME/.config/sxhkd
+mkdir -p $HOME/.config/qpdfview
 ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
 ln -s $(pwd)/.config/sxhkd/* $HOME/.config/sxhkd/
 ln -s $(pwd)/.config/qpdfview/* $HOME/.config/qpdfview/
 
 root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/backlight/intel_backlight/brightness"
-
 
 (crontab -l; printf "*/5 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) low-battery.sh\n") | crontab -
 
