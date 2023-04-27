@@ -1,5 +1,10 @@
 export PLAN9=$HOME/plan9
 export BROWSER=chromium
+export MAX_BRIGHTNESS=$(cat /sys/class/backlight/*/max_brightness)
+export BRIGHTNESS_STEP=$(echo $(($MAX_BRIGHTNESS/20)))
 PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/usr/local/go/bin:$HOME/go/bin:$PLAN9/bin
 setxkbmap -option "caps:swapescape" us
-#DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/${UID}/bus}"
+xset b off
+natural-scrolling.sh
+printf "$(($MAX_BRIGHTNESS/2))\n" > /sys/class/backlight/intel_backlight/brightness
+eval $(ssh-agent -s);ssh-add /home/utt/.ssh/git_key

@@ -1,2 +1,3 @@
 xterm*faceName: DejaVuSansMono
 xterm*faceSize: 12
+xterm*visualBell: false

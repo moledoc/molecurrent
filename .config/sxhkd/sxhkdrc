@@ -22,9 +22,9 @@ shift + XF86AudioLowerVolume
 
 # brightness
 XF86MonBrightnessUp
-	brightness.sh "+$BRIGHTNESS_STEP"
+	brightness.sh + "$BRIGHTNESS_STEP"
 XF86MonBrightnessDown
-	brightness.sh "-$BRIGHTNESS_STEP"
+	brightness.sh - "$BRIGHTNESS_STEP"
 
 # langs
 super + space

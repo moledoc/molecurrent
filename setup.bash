@@ -6,7 +6,8 @@ root_call(){
 	printf "$ROOT_PASSWORD" | su -c "$1"
 }
 
-root_call "apt update && apt upgrade && apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium sxhkd fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird"
+# apt update && apt upgrade && 
+root_call "apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev alsa-utils git openbox chromium sxhkd fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
 # texlive-full pandoc
 read -p "Press enter to continue"
 
@@ -60,6 +61,7 @@ root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/ba
 (crontab -l; printf "*/5 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) low-battery.sh\n") | crontab -
 
 root_call "chmod 777 /usr/sbin/reboot /usr/sbin/shutdown"
+root_call "chmod 777 /sys/class/backlight/intel_backlight/brightness"
 
 rm $HOME/setup.bash
 /usr/sbin/reboot
