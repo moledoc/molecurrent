@@ -13,7 +13,6 @@ read -p "Press enter to continue"
 git clone https://github.com/moledoc/molecurrent.git
 cd molecurrent
 molecurrent_path=$(pwd)
-git checkout from-vm # TODO: remove once merged to main
 git remote set-url origin git@github.com:moledoc/molecurrent.git
 
 git clone https://git.suckless.org/slock
