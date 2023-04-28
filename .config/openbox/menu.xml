@@ -35,6 +35,9 @@
   <item label="Battery">
     <action name="Execute"><execute>battery.sh</execute></action>
   </item>
+  <item label="Wifi">
+    <action name="Execute"><execute>xterm -e nmtui</execute></action>
+  </item>
   <separator />
   <menu id="/Debian" />
   <separator />
