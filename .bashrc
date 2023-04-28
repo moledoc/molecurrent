@@ -21,3 +21,8 @@ pushd -n $HOME > /dev/null
 pushd -n $HOME/go/src > /dev/null
 pushd -n $HOME/go/src/github.com > /dev/null
 pushd -n $HOME/go/src/github.com/moledoc > /dev/null
+
+fudo(){
+	test -z "$ROOT_PASSWORD" && read -s -p "Root Password: " ROOT_PASSWORD && printf "\n"
+        printf "$ROOT_PASSWORD" | su --command="$*"
+}

@@ -7,7 +7,7 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium sxhkd fuse3 ntfs-3g dunst alsa-utils blueman vlc keepassxc spacefm-gtk3 wpagui gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
+root_call "apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev rfkill network-manager git openbox chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
 # texlive-full pandoc
 read -p "Press enter to continue"
 
