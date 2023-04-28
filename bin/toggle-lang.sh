@@ -5,4 +5,4 @@ case $cur in
 	"ee") new=us ;;
 esac
 setxkbmap -layout $new
-notify-send -u low "Language: $new"
+dunstify -a "changeLayout" -t 500 -u low -h string:x-dunst-stack-tag:lang "Language: $new"

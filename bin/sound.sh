@@ -11,6 +11,6 @@ volume="$(echo $status | grep -oE --color=none '[0-9]{1,3}%')"
 mute="$(echo $status |  grep -oE --color=none '\[[onf]{1,3}' | tr -d '[')"
 test $volume = 0 -o "$mute" = "off" && \
 	# Show the sound muted notification
-	notify-send -u low "Volume muted"  || \
+	dunstify -a "changeVolume" -t 500 -u low -h string:x-dunst-stack-tag:vol -h int:value:0 "Volume muted" || \
 	# Show the volume notification
-	notify-send -u low "Volume: ${volume}"
+	dunstify -a "changeVolume" -t 500 -u low -h string:x-dunst-stack-tag:vol -h int:value:"${volume}" "Volume: ${volume}"

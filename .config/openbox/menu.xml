@@ -24,6 +24,9 @@
   <item label="Screenshot">
     <action name="Execute"><execute>flameshot launcher</execute></action>
   </item>
+  <item label="Keepass">
+    <action name="Execute"><execute>keepassxc</execute></action>
+  </item>
   <!-- This requires the presence of the 'obamenu' package to work -->
   <separator />
   <item label="Datetime">

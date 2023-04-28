@@ -34,6 +34,10 @@ super + space
 alt + d
 	datetime.sh
 
+# show battery
+alt + b
+	battery.sh
+
 # lock screen
 super + l
 	 slock

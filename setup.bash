@@ -7,7 +7,7 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev alsa-utils git openbox chromium sxhkd fuse3 vlc spacefm-gtk3 wpagui gnome-backgrounds feh libnotify-bin qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
+root_call "apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev git openbox chromium sxhkd fuse3 ntfs-3g dunst alsa-utils blueman vlc keepassxc spacefm-gtk3 wpagui gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
 # texlive-full pandoc
 read -p "Press enter to continue"
 
@@ -62,6 +62,10 @@ root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/ba
 
 root_call "chmod 777 /usr/sbin/reboot /usr/sbin/shutdown"
 root_call "chmod 777 /sys/class/backlight/intel_backlight/brightness"
+root_call "chmod 777 /sys/class/power_supply/BAT0/capacity"
+
+# make apt colorless
+su -c "printf 'Binary::apt::DPkg::Progress-Fancy \"false\";\nBinary::apt::APT::Color \"false\";' > /etc/apt/apt.conf.d/99nocolor"
 
 rm $HOME/setup.bash
 /usr/sbin/reboot
