@@ -6,10 +6,10 @@
                 file:///usr/share/openbox/menu.xsd">
 
 <menu id="root-menu" label="Openbox 3">
-  <item label="Terminal emulator">
+  <item label="Terminal">
     <action name="Execute"><execute>x-terminal-emulator</execute></action>
   </item>
-  <item label="Web browser">
+  <item label="Browser">
     <action name="Execute"><execute>x-www-browser</execute></action>
   </item>
   <item label="Files">
@@ -38,20 +38,30 @@
   <item label="Wifi">
     <action name="Execute"><execute>xterm -e nmtui</execute></action>
   </item>
+  <item label="Shortcuts">
+    <action name="Execute"><execute>xterm -e "vi $HOME/.config/sxhkd/sxhkdrc"</execute></action>
+  </item>
   <separator />
   <menu id="/Debian" />
   <separator />
   <menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/>
   <separator />
-  <item label="ObConf">
-    <action name="Execute"><execute>obconf</execute></action>
-  </item>
-  <item label="Reconfigure">
-    <action name="Reconfigure" />
-  </item>
-  <item label="Restart Openbox">
-    <action name="Restart" />
-  </item>
+  <menu id="ob-sxhkd" label="ob-sxhkd">
+	  <item label="ObConf">
+	    <action name="Execute"><execute>obconf</execute></action>
+	  </item>
+	  <item label="Reconfigure">
+	    <action name="Reconfigure" />
+	  </item>
+	  <item label="Restart Openbox">
+	    <action name="Restart" />
+	  </item>
+	  <item label="Restart sxhkd">
+	    <action name="Execute">
+		 <execute>xdotool key ctrl+alt+k+r</execute>
+	    </action>
+	  </item>
+  </menu>
   <separator />
   <item label="Lock">
     <action name="Execute">
