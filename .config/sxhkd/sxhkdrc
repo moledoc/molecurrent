@@ -26,6 +26,16 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	brightness.sh - "$BRIGHTNESS_STEP"
 
+# terminal
+super + Return
+	$TERM
+ctrl + alt + t
+	$TERM
+
+# browser
+super + b
+	$BROWSER
+
 # langs
 super + space
 	toggle-lang.sh
@@ -42,10 +52,17 @@ alt + b
 super + l
 	 slock
 
-# screenshot
-Print
-	 flameshot launcher
+## screenshot
+#Print
+#	 flameshot launcher
 
+# file explorer
+super + e
+	spacefm
+
+# change wallpaper
+ctrl + alt + w + p
+	feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 
 # restart sxhkd
 ctrl + alt + k + r
