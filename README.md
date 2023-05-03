@@ -38,6 +38,7 @@ chmod +x setup.bash
 ## TODO:
 
 * improve readme
+* Currently keybinds are in 2 different places (.config/openbox/rc.xml and .config/sxhkd/sxhkdrc). Probably should think about unifying them
 
 * bluetooth
 * mounting
