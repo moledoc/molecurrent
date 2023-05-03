@@ -2,6 +2,7 @@ export PLAN9=$HOME/plan9
 export BROWSER=chromium
 export MAX_BRIGHTNESS=$(cat /sys/class/backlight/*/max_brightness)
 export BRIGHTNESS_STEP=$(echo $(($MAX_BRIGHTNESS/20)))
+export TERM=uxterm
 PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/usr/local/go/bin:$HOME/go/bin:$PLAN9/bin
 setxkbmap -option "caps:swapescape" us
 xset b off
