@@ -1,5 +1,7 @@
 #!/bin/bash
 
+user=${whoami}
+
 read -s -p "Root Password: " ROOT_PASSWORD
 
 root_call(){
@@ -7,7 +9,7 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev rfkill network-manager git openbox chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
+root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev rfkill network-manager git openbox chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput"
 # texlive-full pandoc
 read -p "Press enter to continue"
 
@@ -56,16 +58,25 @@ ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
 ln -s $(pwd)/.config/sxhkd/* $HOME/.config/sxhkd/
 ln -s $(pwd)/.config/qpdfview/* $HOME/.config/qpdfview/
 
-root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font /sys/class/backlight/intel_backlight/brightness"
+# mnt points for acme
+root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font"
 
-(crontab -l; printf "*/5 * * * * XDG_RUNTIME_DIR=/run/user/$(id -u) low-battery.sh\n") | crontab -
+# doas setup
+root_call "printf \"permit nopass ${user} as root cmd /usr/sbin/reboot\npermit nopass ${user} as root cmd /usr/sbin/shutdown\npermit ${user} as root\" > /etc/doas.conf"
 
-root_call "chmod 777 /usr/sbin/reboot /usr/sbin/shutdown"
-root_call "chmod 777 /sys/class/backlight/intel_backlight/brightness"
-root_call "chmod 777 /sys/class/power_supply/BAT0/capacity"
+# allow user to change brightness
+root_call "printf 'ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chgrp video /sys/class/backlight/%k/brightness\"\nACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chmod g+w /sys/class/backlight/%k/brightness\"' > /etc/udev/rules.d/backlight.rules" 
+root_call "usermod -a -G video ${user}
+
+#root_call "chmod 777 /usr/sbin/reboot /usr/sbin/shutdown"
+#root_call "chmod 777 /sys/class/backlight/intel_backlight/brightness"
+#root_call "chmod 777 /sys/class/power_supply/BAT0/capacity"
 
 # make apt colorless
 su -c "printf 'Binary::apt::DPkg::Progress-Fancy \"false\";\nBinary::apt::APT::Color \"false\";' > /etc/apt/apt.conf.d/99nocolor"
+
+# battery warning cron
+#(crontab -l; printf "*/5 * * * * ${user} /usr/local/bin/low-battery.sh\n") | crontab -
 
 rm $HOME/setup.bash
 /usr/sbin/reboot

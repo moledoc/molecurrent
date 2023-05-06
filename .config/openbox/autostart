@@ -5,3 +5,4 @@ xautolock -time 10 -locker slock &
 autostart &
 dunst &
 playerctld &
+low-battery.sh &
