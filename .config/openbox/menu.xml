@@ -41,6 +41,9 @@
   <item label="Shortcuts">
     <action name="Execute"><execute>xterm -e "vi $HOME/.config/sxhkd/sxhkdrc"</execute></action>
   </item>
+  <item label="Wallpaper">
+    <action name="Execute"><execute> feh --recursive --bg-fill --randomize /usr/share/backgrounds</execute></action>
+  </item>
   <separator />
   <menu id="/Debian" />
   <separator />

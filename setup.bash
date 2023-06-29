@@ -62,7 +62,7 @@ ln -s $(pwd)/.config/qpdfview/* $HOME/.config/qpdfview/
 root_call "mkdir /mnt/acme /mnt/font;chmod 777 /mnt/acme /mnt/font"
 
 # doas setup
-root_call "printf \"permit nopass ${user} as root cmd /usr/sbin/reboot\npermit nopass ${user} as root cmd /usr/sbin/shutdown\npermit ${user} as root\" > /etc/doas.conf"
+root_call "printf \"permit nopass ${user} as root cmd /usr/sbin/reboot\npermit nopass ${user} as root cmd /usr/sbin/shutdown\npermit ${user} as root\npermit nopass ${user} as root cmd /usr/sbin/dhclient\" > /etc/doas.conf"
 
 # allow user to change brightness
 root_call "printf 'ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chgrp video /sys/class/backlight/%k/brightness\"\nACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chmod g+w /sys/class/backlight/%k/brightness\"' > /etc/udev/rules.d/backlight.rules" 

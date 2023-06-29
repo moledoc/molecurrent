@@ -6,3 +6,4 @@ autostart &
 dunst &
 playerctld &
 low-battery.sh &
+/usr/sbin/dhclient wlp2s0 &
