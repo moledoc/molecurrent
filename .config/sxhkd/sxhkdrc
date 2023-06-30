@@ -11,6 +11,8 @@ XF86AudioNext
 	playerctl next
 XF86AudioPrev
 	playerctl previous
+XF86AudioMicMute
+	toggle-mic.sh
 
 # duplicate for use on keyboard w/o media keys
 shift + XF86AudioMute

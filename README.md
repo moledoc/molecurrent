@@ -14,7 +14,6 @@ chmod +x setup.bash
 ./setup.bash
 ```
 
-
 ## Programs
 
 * window manager - openbox
@@ -24,15 +23,16 @@ chmod +x setup.bash
 * file manager - spacefm
 	* terminal file manager - mc (midnight commander)
 	* alt to terminal file manager - acme
-* sxhkd - keyboard shortcuts
-* notify-send - notifications
+* keyboard shortcuts - sxhkd // MAYBE: move over to openbox shortcuts only(?)
+* notifications - dunst
 * lockscreen - patched slock (patch in `.patches`)
 * autolocker - xautolock
-* wifi - wpa_gui, (wpa_supplicant and nmcli for cli)
-* flameshot - screenshots
-* vlc - media player
-* qpdfview - pdf viewrs
+* wifi - wpa_gui, (wpa_supplicant and nmcli for cli) // TODO: needs improvement
+* screenshots - flameshot
+* media player - vlc
+* pdf viewr - qpdfview
 * image viewer - feh (also sets the background)
+* bluetooth - bluetoothctl
 
 
 ## TODO:
@@ -40,20 +40,35 @@ chmod +x setup.bash
 * improve readme
 * Currently keybinds are in 2 different places (.config/openbox/rc.xml and .config/sxhkd/sxhkdrc). Probably should think about unifying them
 
-* bluetooth
-* mounting
-* microphone/camera for video calls
+## Bluetooth
 
-* ~~wifi right after login (wpa_supplicant, add steps in readme)~~
-* ~~openbox menu system~~
-* ~~wifi~~ wpa_gui
-* ~~logout~~ openbox --exit
-	* to log out, use `openbox --exit`
-* ~~login screen~~ startx in .bash_profile
-* ~~datetime, sound, brightness, battery~~ - handled by scripts
+This article was very helpful: `https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/`
 
+```sh
+doas systemctl status bluetooth
+doas systemctl enable bluetooth
+bluetoothctl scan on # to find the wanted bluetooth device
+bluetoothctl discoverable on
+bluetoothctl pair <device address> # for new device
+bluetoothctl paired-devices # list paired devices
+bluetoothctl connect <device address> # for existing device
+bluetoothctl (un)trust <device address>
+bluetoothctl disconnect <device address>
+bluetoothctl remove <device address>
+bluetoothctl block <device address>
 
 ## Wifi issues
+
+### Every reboot/coming out of sleep - no wifi
+
+Haven't figured out the root cause, but running `dhclient` seems to help.
+
+```sh
+doas /usr/sbin/dhclient -r # release current lease
+doas /usr/sbin/dhclient -4 -v -i -pf /run/dhclient.wlp2s0.pid -lf /var/lib/dhcp/dhclient.wlp2s0.leases -I -df /var/lib/dhcp/dhclient6.wlp2s0.leases wlp2s0
+```
+
+### Setting up
 
 (copied from moledebian\_min)
 
