@@ -56,6 +56,7 @@ bluetoothctl (un)trust <device address>
 bluetoothctl disconnect <device address>
 bluetoothctl remove <device address>
 bluetoothctl block <device address>
+```
 
 ## Wifi issues
 
