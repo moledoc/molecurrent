@@ -68,6 +68,12 @@ doas /usr/sbin/dhclient -r # release current lease
 doas /usr/sbin/dhclient -4 -v -i -pf /run/dhclient.wlp2s0.pid -lf /var/lib/dhcp/dhclient.wlp2s0.leases -I -df /var/lib/dhcp/dhclient6.wlp2s0.leases wlp2s0
 ```
 
+Another thing that might help is ([source](https://www.linuxquestions.org/questions/linux-networking-3/returning-wifi-and-dhclient-after-suspend-4175552061/))
+
+```sh
+wpa_passphrase ${ssid} ${password} | doas tee /etc/wpa_supplicant/${ssid}.conf
+```
+
 ### Setting up
 
 (copied from moledebian\_min)
