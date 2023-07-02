@@ -9,7 +9,7 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip pandoc texlive-full"
+root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip pandoc texlive-full"
 # openbox 
 read -p "Press enter to continue"
 
@@ -20,6 +20,9 @@ git remote set-url origin git@github.com:moledoc/molecurrent.git
 
 git clone https://git.suckless.org/slock
 cd slock; cp config.def.h config.h; patch config.h ../.patches/slock.patch; root_call "make clean install"; cd ..
+
+git clone https://git.suckless.org/dmenu
+cd dmenu; cp config.def.h config.h; patch config.h ../.patches/dmenu_config.patch; patch dmenu.c ../.patches/dmenu_c.patch; root_call "make clean install"; cd ..
 
 git clone https://github.com/nikolas/evilwm.git
 cd evilwm; sed -i 's/OPT_CPPFLAGS += -DVWM/# OPT_CPPFLAGS += -DVWM/' Makefile; make; root_call "make install"; cd ..

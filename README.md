@@ -38,7 +38,8 @@ chmod +x setup.bash
 ## TODO:
 
 * improve readme
-* Currently keybinds are in 2 different places (.config/openbox/rc.xml and .config/sxhkd/sxhkdrc). Probably should think about unifying them
+* //Currently keybinds are in 2 different places (.config/openbox/rc.xml and .config/sxhkd/sxhkdrc). Probably should think about unifying them
+* unify the sxhkd keybindings to match the wm one (currently `evilwm`)
 
 ## Bluetooth
 

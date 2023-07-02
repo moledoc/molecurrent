@@ -67,7 +67,7 @@ ctrl + alt + w + p
 	feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 
 # restart sxhkd
-ctrl + alt + k + r
+super + k + r
 	sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd &
 
 # logout
@@ -81,3 +81,11 @@ ctrl + alt + s + r
 # shutdown
 ctrl + alt + s + q
 	shutdown now
+
+# help
+super + h
+	xterm -e "man evilwm | cat $HOME/.config/sxhkd/sxhkdrc - | vi -"
+
+super + button3
+	menu.sh
+

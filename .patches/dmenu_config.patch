@@ -1,0 +1,4 @@
+17c17
+< static unsigned int lines      = 0;
+---
+> static unsigned int lines      = 10;
