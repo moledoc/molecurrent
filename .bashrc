@@ -1,3 +1,4 @@
+# aliases
 alias ls="ls -F"
 alias dir="dir -F"
 alias dirs="dirs -l -p"
@@ -8,6 +9,13 @@ alias vdir="vdir -F"
 # 9 mount `namespace`/acme /mnt/acme9
 alias acme="acme -f /mnt/font/DejaVuSans/14a/font -m /mnt/acme &; sleep 5 && acmego &"
 
+# push some dirs for `dirs`
+pushd -n $HOME > /dev/null
+pushd -n $HOME/go/src > /dev/null
+pushd -n $HOME/go/src/github.com > /dev/null
+pushd -n $HOME/go/src/github.com/moledoc > /dev/null
+
+# PS1
 branch(){
         git branch 2> /dev/null 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
@@ -17,12 +25,3 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(branch)\$ '
-pushd -n $HOME > /dev/null
-pushd -n $HOME/go/src > /dev/null
-pushd -n $HOME/go/src/github.com > /dev/null
-pushd -n $HOME/go/src/github.com/moledoc > /dev/null
-
-fudo(){
-	test -z "$ROOT_PASSWORD" && read -s -p "Root Password: " ROOT_PASSWORD && printf "\n"
-        printf "$ROOT_PASSWORD" | su --command="$*"
-}

@@ -9,8 +9,8 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev rfkill network-manager git openbox chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip"
-# texlive-full pandoc
+root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip pandoc texlive-full"
+# openbox 
 read -p "Press enter to continue"
 
 git clone https://github.com/moledoc/molecurrent.git
@@ -20,6 +20,9 @@ git remote set-url origin git@github.com:moledoc/molecurrent.git
 
 git clone https://git.suckless.org/slock
 cd slock; cp config.def.h config.h; patch config.h ../.patches/slock.patch; root_call "make clean install"; cd ..
+
+git clone https://github.com/nikolas/evilwm.git
+cd evilwm; sed -i 's/OPT_CPPFLAGS += -DVWM/# OPT_CPPFLAGS += -DVWM/' Makefile; make; root_call "make install"; cd ..
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 root_call "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz"
@@ -51,10 +54,12 @@ ln -s $(pwd)/.bash_profile $HOME/.bash_profile
 ln -s $(pwd)/.xinitrc $HOME/.xinitrc
 ln -s $(pwd)/.Xresources $HOME/.Xresources
 
-mkdir -p $HOME/.config/openbox
+# openbox
+# mkdir -p $HOME/.config/openbox
+# ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
+
 mkdir -p $HOME/.config/sxhkd
 mkdir -p $HOME/.config/qpdfview
-ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
 ln -s $(pwd)/.config/sxhkd/* $HOME/.config/sxhkd/
 ln -s $(pwd)/.config/qpdfview/* $HOME/.config/qpdfview/
 
