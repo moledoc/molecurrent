@@ -1,7 +1,7 @@
 #!/bin/sh
 
 action=$(printf "Terminal
-Browswer
+Browser
 Files
 Mail
 Acme
@@ -17,13 +17,13 @@ Restart sxhkd
 Lock
 Logout
 Restart
-Shutdown" | dmenu -l 18)
+Shutdown" | dmenu -l 18 -i)
 
 case "$action" in
 	"Terminal")
 		x-terminal-emulator
 		;;
-	"Browswer")
+	"Browser")
 		x-www-browser
 		;;
 	"Files")
@@ -74,11 +74,11 @@ case "$action" in
 		pgrep -x evilwm | xargs -I {} kill -9 "{}"
 		;;
 	"Restart")
-		confirm=$(printf "no\nyes" | dmenu -p "Are you sure you want to reboot")
-		test "yes" == "$confirm" && /usr/sbin/reboot
+		confirm=$(printf "no\nyes" | dmenu -i -p "Are you sure you want to reboot")
+		test "yes" = "$confirm" && /usr/sbin/reboot
 		;;
 	"Shutdown")
-		confirm=$(printf "no\nyes" | dmenu -p "Are you sure you want to shutdown")
-		test "yes" == "$confirm" && /usr/sbin/shutdown
+		confirm=$(printf "no\nyes" | dmenu -i -p "Are you sure you want to shutdown")
+		test "yes" = "$confirm" && /usr/sbin/shutdown
 		;;
 esac
