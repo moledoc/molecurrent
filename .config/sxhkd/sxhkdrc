@@ -82,10 +82,10 @@ ctrl + alt + s + r
 ctrl + alt + s + q
 	shutdown now
 
-# help
-super + h
-	xterm -e "man evilwm | cat $HOME/.config/sxhkd/sxhkdrc - | vi -"
-
+# menu
 super + button3
 	menu.sh
 
+# run launcher
+super + p
+	dmenu_run
