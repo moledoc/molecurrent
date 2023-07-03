@@ -51,9 +51,10 @@ case "$action" in
 		xterm -e nmtui
 		;;
 	"Reset Wifi")
-		xterm -e "pgrep -x dhclient | xargs -I {} doas kill -9 \"{}\";	
-		doas /usr/sbin/dhclient -r;
-		doas /usr/sbin/dhclient -4 -v -i -pf /run/dhclient.wlp2s0.pid -lf /var/lib/dhcp/dhclient.wlp2s0.leases -I -df /var/lib/dhcp/dhclient6.wlp2s0.leases wlp2s0;"
+		xterm -e "su -c \"kill -9 $(pgrep -x dhclient);	
+			/usr/sbin/dhclient -r;
+			/usr/sbin/dhclient -4 -v -i -pf /run/dhclient.wlp2s0.pid -lf /var/lib/dhcp/dhclient.wlp2s0.leases -I -df /var/lib/dhcp/dhclient6.wlp2s0.leases wlp2s0;
+		\""
 		;;
 	"Shortcuts")
 		xterm -e "man evilwm | cat $HOME/.config/sxhkd/sxhkdrc - | vi -"
