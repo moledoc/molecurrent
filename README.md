@@ -33,6 +33,7 @@ chmod +x setup.bash
 * pdf viewr - qpdfview
 * image viewer - feh (also sets the background)
 * bluetooth - bluetoothctl
+* ebook/epub reader - calibre
 
 
 ## TODO:

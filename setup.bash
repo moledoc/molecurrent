@@ -9,7 +9,7 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip pandoc texlive-full"
+root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip pandoc texlive-full calibre"
 # openbox 
 read -p "Press enter to continue"
 
