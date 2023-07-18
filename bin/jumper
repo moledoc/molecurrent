@@ -1,0 +1,7 @@
+#!/bin/sh
+
+find $HOME/go/src -not -path "*/\.git/*" > $HOME/jumper
+find $HOME/c -not -path "*/\.git/*" >> $HOME/jumper
+
+grep -rn --color=none "^func" /home/utt/go/src >> $HOME/jumper
+grep -rn --color=none "^type" /home/utt/go/src >> $HOME/jumper
