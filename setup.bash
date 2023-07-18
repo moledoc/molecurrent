@@ -44,6 +44,8 @@ cindex $HOME/go/src /usr/local/go
 
 root_call "ln -s $(pwd)/bin/* /usr/local/bin/"
 
+git config --global init.defaultBranch "main"
+git config --global pager.log false
 git config --global color.ui false
 git config --global user.name "meelis utt"
 git config --global user.email "meelis.utt@gmail.com"
