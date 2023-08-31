@@ -1,5 +1,5 @@
 # aliases
-alias ls="ls -F"
+alias ls="ls --file-type"
 alias dir="dir -F"
 alias dirs="dirs -l -p"
 alias vdir="vdir -F"
