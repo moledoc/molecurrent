@@ -10,7 +10,6 @@ root_call(){
 
 # apt update && apt upgrade && 
 root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip pandoc texlive-full calibre"
-# openbox 
 read -p "Press enter to continue"
 
 git clone https://github.com/moledoc/molecurrent.git
@@ -19,25 +18,25 @@ molecurrent_path=$(pwd)
 git remote set-url origin git@github.com:moledoc/molecurrent.git
 
 git clone https://git.suckless.org/slock
-cd slock; cp config.def.h config.h; patch config.h ../.patches/slock.patch; root_call "make clean install"; cd ..
+cd slock; cp config.def.h config.h; patch config.h ../.patches/slock.patch; root_call "make clean install"; cd -
 
 git clone https://git.suckless.org/dmenu
-cd dmenu; cp config.def.h config.h; patch config.h ../.patches/dmenu_config.patch; patch dmenu.c ../.patches/dmenu_c.patch; root_call "make clean install"; cd ..
-
-git clone https://github.com/nikolas/evilwm.git
-cd evilwm; sed -i 's/OPT_CPPFLAGS += -DVWM/# OPT_CPPFLAGS += -DVWM/' Makefile; make; root_call "make install"; cd ..
+cd dmenu; cp config.def.h config.h; patch config.h ../.patches/dmenu_config.patch; patch dmenu.c ../.patches/dmenu_c.patch; root_call "make clean install"; cd -
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 root_call "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz"
 rm go1.20.2.linux-amd64.tar.gz
 
-git clone https://github.com/9fans/plan9port.git $HOME/plan9
-cd $HOME/plan9; ./INSTALL; cd -
-cd $HOME/plan9/bin; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
+git clone https://github.com/9fans/plan9port.git plan9
+cd plan9; ./INSTALL; cd -
+cd plan9/bin; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
+ 
+git clone https://github.com/9fans/go.git 9fansgo
+cd 9fansgo/acme/acmego; /usr/local/bin/go install; cd -
+cd 9fansgo/acme/Watch; /usr/local/bin/go install; cd -
 
-git clone https://github.com/9fans/go.git $HOME/9fansgo
-/usr/local/go/bin/go install $HOME/9fansgo/acme/acmego
-/usr/local/go/bin/go install $HOME/9fansgo/acme/Watch
+git clone https://github.com/9wm/9wm.git
+cd 9wm; root_call "make install"; cd -
 
 /usr/local/go/bin/go install github.com/google/codesearch/cmd/...@latest
 cindex $HOME/go/src /usr/local/go
@@ -53,15 +52,11 @@ read -p "Press enter to continue"
 
 ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
 
-mv $HOME/.bashrc $HOME/.bashrc_orig
+mv $HOME/.bashrc $HOME/.bashrc.orig
 ln -s $(pwd)/.bashrc $HOME/.bashrc
 ln -s $(pwd)/.bash_profile $HOME/.bash_profile
 ln -s $(pwd)/.xinitrc $HOME/.xinitrc
 ln -s $(pwd)/.Xresources $HOME/.Xresources
-
-# openbox
-# mkdir -p $HOME/.config/openbox
-# ln -s $(pwd)/.config/openbox/* $HOME/.config/openbox/
 
 mkdir -p $HOME/.config/sxhkd
 mkdir -p $HOME/.config/qpdfview

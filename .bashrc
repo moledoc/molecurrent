@@ -7,7 +7,7 @@ alias vdir="vdir -F"
 # if acmego doesn't start, try these commands
 # chmod 777 /mnt/acme /mnt/font
 # 9 mount `namespace`/acme /mnt/acme9
-alias acme="acme -f /mnt/font/DejaVuSans/14a/font -m /mnt/acme &; sleep 5 && acmego &"
+alias acme="acme -f /mnt/font/DejaVuSans/14a/font -m /mnt/acme &" #; sleep 5 && acmego &"
 
 # push some dirs for `dirs`
 pushd -n $HOME > /dev/null

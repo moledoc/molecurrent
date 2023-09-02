@@ -1,3 +1,4 @@
+export WM=9wm
 export PLAN9=$HOME/plan9
 export BROWSER=chromium
 export MAX_BRIGHTNESS=$(cat /sys/class/backlight/*/max_brightness)

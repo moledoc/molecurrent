@@ -17,5 +17,4 @@ feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 printf "$(($MAX_BRIGHTNESS/2))\n" > /sys/class/backlight/intel_backlight/brightness
 natural-scrolling.sh &
 
-exec /usr/bin/evilwm -snap 10 -bw 2 -fg red -nosoliddrag
-# openbox-session
+exec /home/utt/molecurrent/9wm/9wm

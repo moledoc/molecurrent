@@ -1,9 +1,0 @@
-feh --recursive --bg-fill --randomize /usr/share/backgrounds &
-plumber &
-sxhkd &
-xautolock -time 10 -locker slock &
-autostart &
-dunst &
-playerctld &
-low-battery.sh &
-# /usr/sbin/dhclient wlp2s0 &

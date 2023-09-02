@@ -72,7 +72,7 @@ super + k + r
 
 # logout
 ctrl + alt + o + l
-	openbox --exit	
+	kill -9 $(pgrep -x "$WM")
 
 # reboot
 ctrl + alt + s + r

@@ -57,10 +57,7 @@ case "$action" in
 		\""
 		;;
 	"Shortcuts")
-		xterm -e "man evilwm | cat $HOME/.config/sxhkd/sxhkdrc - | vi -"
-		;;
-	"Shortcuts")
-		xterm -e "man evilwm | cat $HOME/.config/sxhkd/sxhkdrc - | vi -"
+		xterm -e "cat $HOME/.config/sxhkd/sxhkdrc | vi -"
 		;;
 	"Wallpaper")
 		xdotool key ctrl+alt+w+p
@@ -72,7 +69,7 @@ case "$action" in
 		xdotool key super+l
 		;;
 	"Logout")
-		pgrep -x evilwm | xargs -I {} kill -9 "{}"
+		kill -9 $(pgrep -x 9wm)
 		;;
 	"Restart")
 		confirm=$(printf "no\nyes" | dmenu -i -p "Are you sure you want to reboot")

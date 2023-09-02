@@ -2,7 +2,9 @@
 # molecurrent
 
 The current setup I'm exploring.
-This particular setup is mouse-based: openbox, acme
+This particular setup is mouse-based: 9wm, acme
+This build has moved quite towards plan9.
+I do enjoy the simplicity of this build
 
 ## setup 
 
@@ -16,14 +18,14 @@ chmod +x setup.bash
 
 ## Programs
 
-* window manager - openbox
+* window manager - 9wm
 * web browser - chromium
 * text editor - acme/vi
 * terminal - xterm or any other default one
 * file manager - spacefm
 	* terminal file manager - mc (midnight commander)
 	* alt to terminal file manager - acme
-* keyboard shortcuts - sxhkd // MAYBE: move over to openbox shortcuts only(?)
+* keyboard shortcuts - sxhkd
 * notifications - dunst
 * lockscreen - patched slock (patch in `.patches`)
 * autolocker - xautolock
@@ -39,8 +41,8 @@ chmod +x setup.bash
 ## TODO:
 
 * improve readme
-* //Currently keybinds are in 2 different places (.config/openbox/rc.xml and .config/sxhkd/sxhkdrc). Probably should think about unifying them
-* unify the sxhkd keybindings to match the wm one (currently `evilwm`)
+* MAYBE: fork the external programs to this build, so no need to clone external repos. ie plan9fans, plan9, slock, dmenu, 9wm
+* improve acme setup. I read somewhere that there is a setup script that does everything that's needed. Currently I'm kind of doing it manually in my scripts.
 
 ## Bluetooth
 
