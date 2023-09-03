@@ -1,0 +1,3 @@
+#!/bin/sh
+xterm -e "echo \"$PATH\" | tr \":\" \"\n\" | parallel ls | fzf > /tmp/launch"
+$(cat /tmp/launch)

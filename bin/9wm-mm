@@ -1,2 +1,1 @@
-#!/bin/sh
-menu.sh
+/home/utt/molecurrent/9menu/9menu -popup -file /home/utt/molecurrent/9menu.cmds
