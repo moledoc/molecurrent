@@ -5,6 +5,7 @@ Mail:thunderbird
 Acme:start-acme.sh
 Screenshot:"flameshot launcher"
 Keepass:keepassxc
+Status:datetime.sh;battery.sh
 Datetime:datetime.sh
 Battery:battery.sh
 Wifi:xterm -e "nmtui"

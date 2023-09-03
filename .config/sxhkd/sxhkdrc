@@ -42,6 +42,10 @@ super + b
 super + space
 	toggle-lang.sh
 
+# show status: datetime and battery
+super + s
+	datetime.sh && battery.sh
+
 # show datetime
 alt + d
 	datetime.sh
