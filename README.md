@@ -46,6 +46,11 @@ chmod +x setup.bash
 * MAYBE: fork the external programs to this build, so no need to clone external repos. ie plan9fans, plan9, slock, dmenu, 9wm
 * MAYBE: replace dmenu with 9menu
 * MAYBE find slock replacement
+* MAYBE: xsecurelock instead of slock:
+```sh
+XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_FONT=DejaVuSans xsecurelock
+```
+* MAYBE: replace suckless for alternatives
 
 ## Bluetooth
 
