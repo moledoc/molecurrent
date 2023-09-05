@@ -7,7 +7,7 @@ xset b off
 # start programs
 plumber &
 sxhkd &
-xautolock -time 10 -locker slock &
+XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_FONT=DejaVuSans xautolock -time 10 -locker xsecurelock &
 dunst &
 playerctld &
 low-battery.sh &

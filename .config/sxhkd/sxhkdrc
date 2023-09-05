@@ -56,7 +56,7 @@ alt + b
 
 # lock screen
 super + l
-	 slock
+	XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_FONT=DejaVuSans xsecurelock
 
 ## screenshot
 #Print
@@ -89,10 +89,6 @@ ctrl + alt + s + q
 # menu
 super + button3
 	menu.sh
-
-# run launcher
-#super + p
-#	dmenu_run
 
 # run launcher
 super + p

@@ -9,7 +9,27 @@ root_call(){
 }
 
 # apt update && apt upgrade && 
-root_call "apt install --fix-missing -y xorg xterm doas build-essential libx11-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev rfkill network-manager git chromium sxhkd fuse3 ntfs-3g dunst alsa-utils vlc keepassxc spacefm-gtk3 gnome-backgrounds feh qpdfview flameshot xdotool libxrandr-dev xautolock mc thunderbird xinput xclip parallel pandoc texlive-full calibre"
+root_call "apt install --fix-missing -y
+xorg xterm build-essential 
+libx11-dev libxext-dev libxt-dev
+libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev 
+doas 
+rfkill network-manager 
+git 
+chromium 
+sxhkd 
+fuse3 ntfs-3g 
+alsa-utils 
+vlc 
+dunst 
+keepassxc 
+spacefm-gtk3
+gnome-backgrounds feh 
+flameshot 
+xdotool libxrandr-dev xautolock xinput xclip parallel 
+thunderbird 
+pandoc texlive-full qpdfview calibre
+"
 read -p "Press enter to continue"
 
 git clone https://github.com/moledoc/molecurrent.git
@@ -17,19 +37,20 @@ cd molecurrent
 molecurrent_path=$(pwd)
 git remote set-url origin git@github.com:moledoc/molecurrent.git
 
-git clone https://git.suckless.org/slock
-cd slock; cp config.def.h config.h; patch config.h ../.patches/slock.patch; root_call "make clean install"; cd -
+# git clone https://git.suckless.org/slock
+# cd slock; cp config.def.h config.h; patch config.h ../.patches/slock.patch; root_call "make clean install"; cd -
 
-git clone https://git.suckless.org/dmenu
-cd dmenu; cp config.def.h config.h; patch config.h ../.patches/dmenu_config.patch; patch dmenu.c ../.patches/dmenu_c.patch; root_call "make clean install"; cd -
+# git clone https://git.suckless.org/dmenu
+# cd dmenu; cp config.def.h config.h; patch config.h ../.patches/dmenu_config.patch; patch dmenu.c ../.patches/dmenu_c.patch; root_call "make clean install"; cd -
 
 wget https://go.dev/dl/go1.20.2.linux-amd64.tar.gz
 root_call "rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.2.linux-amd64.tar.gz"
 rm go1.20.2.linux-amd64.tar.gz
 
-git clone https://github.com/9fans/plan9port.git plan9
-cd plan9; ./INSTALL; cd -
-cd plan9/bin; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
+root_call "git clone https://github.com/9fans/plan9port.git /usr/local/plan9"
+root_call "cd /usr/local/plan9; ./INSTALL; cd -"
+root_call "cd /usr/local/plan9/bin; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -"
+root_call "mkdir /mnt/acme /mnt/font; /usr/local/plan9/bin/9 chmod 777 /mnt/acme /mnt/font"
  
 git clone https://github.com/9fans/go.git 9fansgo
 cd 9fansgo/acme/acmego; /usr/local/bin/go install; cd -

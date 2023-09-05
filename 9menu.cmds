@@ -10,6 +10,7 @@ Datetime:datetime.sh
 Battery:battery.sh
 Wifi:xterm -e "nmtui"
 Reset Wifi:reset_wifi.sh
+Wifi CLI:xterm -e "wifi.sh"
 Shortcuts:xterm -e "cat $HOME/.config/sxhkd/sxhkdrc | vi -"
 Wallpaper:xdotool key ctrl+alt+w+p
 Restart sxhkd:xdotool key super+k+r
