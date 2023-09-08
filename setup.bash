@@ -67,8 +67,7 @@ root_call "ln -s $(pwd)/bin/* /usr/local/bin/"
 git config --global init.defaultBranch "main"
 git config --global pager.log false
 git config --global color.ui false
-git config --global user.name "meelis utt"
-git config --global user.email "meelis.utt@gmail.com"
+git config --global core.editor "ed"
 read -p "Press enter to continue"
 
 ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
