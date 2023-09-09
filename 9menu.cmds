@@ -9,12 +9,12 @@ Status:datetime.sh;battery.sh
 Datetime:datetime.sh
 Battery:battery.sh
 Wifi:xterm -e "nmtui"
-Reset Wifi:reset_wifi.sh
+Reset Wifi:xterm -e reset_wifi.sh
 Wifi CLI:xterm -e "wifi.sh"
 Shortcuts:xterm -e "cat $HOME/.config/sxhkd/sxhkdrc | vi -"
 Wallpaper:xdotool key ctrl+alt+w+p
 Restart sxhkd:xdotool key super+k+r
 Lock:xdotool key super+l
 Logout:kill -9 $(pgrep -x 9wm)
-Restart:/home/utt/Documents/9menu/9menu -popup no:"echo no" yes:/usr/sbin/reboot
-Shutdown:/home/utt/Documents/9menu/9menu -popup no:echo no" yes:/usr/sbin/shutdown
+Restart:/home/utt/molecurrent/9menu/9menu -popup no:"echo no" yes:/usr/sbin/reboot
+Shutdown:/home/utt/molecurrent/9menu/9menu -popup no:echo no" yes:/usr/sbin/shutdown
