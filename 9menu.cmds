@@ -17,4 +17,4 @@ Restart sxhkd:xdotool key super+k+r
 Lock:xdotool key super+l
 Logout:kill -9 $(pgrep -x 9wm)
 Restart:/home/utt/molecurrent/9menu/9menu -popup no:"echo no" yes:/usr/sbin/reboot
-Shutdown:/home/utt/molecurrent/9menu/9menu -popup no:echo no" yes:/usr/sbin/shutdown
+Shutdown:/home/utt/molecurrent/9menu/9menu -popup no:"echo no" yes:"/usr/sbin/shutdown now"
