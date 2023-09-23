@@ -3,7 +3,7 @@ Terminal:x-terminal-emulator
 Browser:x-www-browser
 Files:spacefm
 Acme:start-acme.sh
-Screenshot:"flameshot launcher"
+Screenshot:flameshot launcher
 Keepass:keepassxc
 Status:datetime.sh;battery.sh
 Datetime:datetime.sh
