@@ -13,6 +13,7 @@ root_call "apt install --fix-missing -y
 xorg xterm build-essential 
 libx11-dev libxext-dev libxt-dev
 libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev 
+xdotool libxrandr-dev xautolock xinput xclip parallel 
 doas 
 rfkill network-manager 
 git 
@@ -26,9 +27,9 @@ keepassxc
 spacefm-gtk3
 gnome-backgrounds feh 
 flameshot 
-xdotool libxrandr-dev xautolock xinput xclip parallel 
 thunderbird 
-pandoc texlive-full qpdfview calibre
+okular scribus calibre
+pandoc texlive-full
 "
 read -p "Press enter to continue"
 
