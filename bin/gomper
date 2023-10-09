@@ -1,2 +1,0 @@
-#!/bin/sh
-find $HOME/go/src/ -type f -name "*.go" -not -path "*/\.git/*" | tee $HOME/gomper | parallel 'grep -nIH --color=none "^func\|^type.*struct"' {} >> $HOME/gomper
