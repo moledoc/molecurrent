@@ -93,3 +93,6 @@ super + button3
 # run launcher
 super + p
 	launcher
+
+ctrl + shift + Escape
+	$TERM -e "top"

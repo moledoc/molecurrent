@@ -1,9 +1,9 @@
 export MAX_BRIGHTNESS=$(cat /sys/class/backlight/*/max_brightness)
-export BRIGHTNESS_STEP=$(echo $(($MAX_BRIGHTNESS/20)))
+export BRIGHTNESS_STEP=$(echo $(($MAX_BRIGHTNESS/50)))
 export WM=9wm
 export BROWSER=chromium
 export TERM=xterm
 export PLAN9=/usr/local/plan9
 export PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/usr/local/go/bin:$PLAN9/bin:$HOME/go/bin
 
-eval $(ssh-agent -s);ssh-add /home/utt/.ssh/git_key;ssh-add /home/utt/.ssh/git_key_dXR0
+eval $(ssh-agent -s);ssh-add /home/utt/.ssh/git_key

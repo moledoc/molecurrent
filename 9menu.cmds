@@ -1,6 +1,7 @@
 Launcher:launcher
 Terminal:x-terminal-emulator
 Browser:x-www-browser
+Top:xterm -e "top"
 Files:spacefm
 Acme:start-acme.sh
 Screenshot:flameshot launcher
