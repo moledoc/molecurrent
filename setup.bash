@@ -69,6 +69,7 @@ git config --global init.defaultBranch "main"
 git config --global pager.log false
 git config --global color.ui false
 git config --global core.editor "ed"
+git config --global core.pager "cat"
 read -p "Press enter to continue"
 
 ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f $HOME/.ssh/git_key -P ""
