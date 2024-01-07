@@ -78,7 +78,7 @@ printf "permit nopass ${user} as root cmd /usr/sbin/reboot\npermit nopass ${user
 read -p "[INFO]: doas configuration done - Press enter to continue" _
 
 # allow user to change brightness
-test -n "$vm" && printf 'ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chgrp video /sys/class/backlight/%k/brightness\"\nACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chmod g+w /sys/class/backlight/%k/brightness\"' > /etc/udev/rules.d/backlight.rules
+test -z "$vm" && printf 'ACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chgrp video /sys/class/backlight/%k/brightness\"\nACTION==\"add\", SUBSYSTEM==\"backlight\", KERNEL==\"intel_backlight\", RUN+=\"/bin/chmod g+w /sys/class/backlight/%k/brightness\"' > /etc/udev/rules.d/backlight.rules
 usermod -a -G video ${user}
 read -p "[INFO]: laptop brightness configuration done - Press enter to continue" _
 
