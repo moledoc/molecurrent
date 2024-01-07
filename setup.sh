@@ -58,11 +58,11 @@ cd "$ext_soft/9menu"; make 9menu; cd -
 ln -s ${molecurrent_path}/9wm.cmds "$ext_soft/9menu"
 read -p "[INFO]: pulled 9menu and ran make - Press enter to continue" _
 
-runuser -u $user -- mv /home/$user/.bashrc /home/$user/.bashrc.orig
-runuser -u $user -- mv /home/$user/.bashenv /home/$user/.bashenv.orig
-runuser -u $user -- mv /home/$user/.bash_profile /home/$user/.bash_profile.orig
-runuser -u $user -- mv /home/$user/.xinitrc /home/$user/.xinitrc.orig
-runuser -u $user -- mv /home/$user/.Xresources /home/$user/.Xresources.orig
+runuser -u $user -- test -e "/home/$user/.bashrc" && mv /home/$user/.bashrc /home/$user/.bashrc.orig
+runuser -u $user -- test -e "/home/$user/.bashenv" && mv /home/$user/.bashenv /home/$user/.bashenv.orig
+runuser -u $user -- test -e "/home/$user/.bash_profile" && mv /home/$user/.bash_profile /home/$user/.bash_profile.orig
+runuser -u $user -- test -e "/home/$user/.xinitrc" && mv /home/$user/.xinitrc /home/$user/.xinitrc.orig
+runuser -u $user -- test -e "/home/$user/.Xresources" && mv /home/$user/.Xresources /home/$user/.Xresources.orig
 
 runuser -u $user -- ln -s ${molecurrent_path}/.bashrc /home/$user/.bashrc
 runuser -u $user -- ln -s ${molecurrent_path}/.bashenv /home/$user/.bashenv
@@ -90,8 +90,7 @@ runuser -u $user -- mkdir /home/$user/.ssh
 runuser -u $user -- ssh-keygen -t rsa -b 4096 -C "meelis.utt@gmail.com" -f /home/$user/.ssh/git_key -P ""
 read -p "[INFO]: ssh key generated - Press enter to continue" _
 
-cd ${molecurrent_path}
-runuser -u "$user" -- ./bin/gh_bu.sh moledoc
+runuser -u "$user" -- ${molecurrent_path}/bin/gh_bu.sh $user moledoc
 cd /home/$user/Documents/gh_bu/calc; cc -o $self_soft/bin/calc calc.c; cd -
 cd /home/$user/Documents/gh_bu/walk; cc -o $self_soft/bin/walk walk.c; cd -
 cd /home/$user/Documents/gh_bu/b64; cc -o $self_soft/bin/b64 b64.c; cd -

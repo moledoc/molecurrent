@@ -2,6 +2,7 @@
 # molecurrent
 
 The current setup I'm exploring.
+
 This particular setup is meant to be more mouse-based/-centric.
 It has gradually become plan9 influenced.
 I do enjoy the simplicity of this build.
@@ -9,13 +10,15 @@ Will see how it works out in the long run
 
 ## setup 
 
-**NB!** If any problems with wifi, check the help sections below.
+Login as root
 
 ```{.sh}
-wget https://raw.githubusercontent.com/moledoc/molecurrent/from-vm/setup.bash
-chmod +x setup.bash
-./setup.bash
+wget https://raw.githubusercontent.com/moledoc/molecurrent/main/setup.sh
+chmod +x setup.sh
+./setup.sh
 ```
+
+**NB!** If any problems with wifi, check the help sections below.
 
 ## Programs
 
@@ -24,20 +27,17 @@ chmod +x setup.bash
 * text editor - acme/vi
 * terminal - xterm or any other default one
 * file manager - spacefm
-	* terminal file manager - mc (midnight commander)
 	* alt to terminal file manager - acme
 * keyboard shortcuts - sxhkd
 * notifications - dunst
 * lockscreen - xsecurelock
 * autolocker - xautolock
-* wifi - wpa_gui, (wpa_supplicant and nmcli for cli) // TODO: needs improvement
+* wifi - nmtui , (also useful wpa_gui, wpa_supplicant and nmcli)
 * screenshots - flameshot
 * media player - vlc
-* pdf viewr - qpdfview
+* pdf viewer - okular
 * image viewer - feh (also sets the background)
 * bluetooth - bluetoothctl
-* ebook/epub reader - calibre
-
 
 ## TODO:
 
@@ -69,6 +69,7 @@ bluetoothctl block <device address>
 Haven't figured out the root cause, but running `dhclient` seems to help.
 
 ```sh
+rfkill block all && rfkill unblock all
 doas /usr/sbin/dhclient -r # release current lease
 doas /usr/sbin/dhclient -4 -v -i -pf /run/dhclient.wlp2s0.pid -lf /var/lib/dhcp/dhclient.wlp2s0.leases -I -df /var/lib/dhcp/dhclient6.wlp2s0.leases wlp2s0
 ```
