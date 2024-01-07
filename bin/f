@@ -1,4 +1,0 @@
-#!/bin/sh
-search=$1
-test -z $search && search=$(cat -)
-9 grep -i -n '^func (\([^)]+\) )?'$search'\(' *.go /dev/null

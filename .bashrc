@@ -1,16 +1,11 @@
 # aliases
 alias ls="ls -F"
-# alias ls="ls --file-type"
 alias dir="dir -F"
-alias dirs="dirs -l -p"
 alias vdir="vdir -F"
-
-# if acmego doesn't start, try these commands
-# 9 chmod 777 /mnt/acme /mnt/font
-# 9 mount `namespace`/acme /mnt/acme
 alias acme="start-acme.sh &"
 
 # push some dirs for `dirs`
+alias dirs="dirs -l -p"
 pushd -n $HOME > /dev/null
 pushd -n $HOME/go/src > /dev/null
 pushd -n $HOME/go/src/github.com > /dev/null
@@ -26,4 +21,4 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 PS1='$PWD$(branch) \$ '
-eval $(ssh-agent -s); ssh-add $HOME/.ssh/git_key
+# eval $(ssh-agent -s); ssh-add $HOME/.ssh/git_key # TODO:
