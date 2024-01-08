@@ -6,4 +6,4 @@ export TERM=xterm
 export PLAN9=/opt/plan9
 export PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/opt/go/bin:$PLAN9/bin:$HOME/go/bin
 
-#eval $(ssh-agent -s);ssh-add /home/utt/.ssh/git_key # TODO:
+eval $(ssh-agent -s)
