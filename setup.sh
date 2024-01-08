@@ -8,6 +8,7 @@ test "root" != "$(whoami)" && echo "run script as root" && exit 1
 user=$(ls /home | tr -d '/')
 
 self_soft=/usr/local
+# TODO: use /usr/local for ext_soft as well? some programs use /usr/local for example
 ext_soft=/opt
 
 apt update && apt upgrade
@@ -37,11 +38,9 @@ rm $go_version
 read -p "[INFO]: installation of golang done - Press enter to continue" _
 
 git clone https://github.com/9fans/plan9port.git "$ext_soft/plan9"
+cd "$ext_soft/plan9/src/cmd/acme"; patch text.c ${molecurrent_path}/.patches/acme_text.patch; cd -
 cd "$ext_soft/plan9"; ./INSTALL; cd -
 cd "$ext_soft/plan9/bin"; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
-# mkdir /mnt/acme /mnt/font; "$ext_soft/plan9/bin/9" chmod 777 /mnt/acme /mnt/font # TODO: 
-# TODO: MAYBE: 9 mount `namespace`/acme /mnt/acme
-# TODO: MAYBE: 9 chmod 777 /mnt/acme /mnt/font
 read -p "[INFO]: pulled 9fans/plan9ports and ran installation - Press enter to continue" _
 
 git clone https://github.com/9fans/go.git "$ext_soft/9fansgo"
