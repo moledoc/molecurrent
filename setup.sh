@@ -45,8 +45,8 @@ cd "$ext_soft/plan9/bin"; patch web ${molecurrent_path}/.patches/plan9-bin-web.p
 read -p "[INFO]: pulled 9fans/plan9ports and ran installation - Press enter to continue" _
 
 git clone https://github.com/9fans/go.git "$ext_soft/9fansgo"
-cd "$ext_soft/9fansgo/acme/Watch"; $ext_soft/go/bin/go install; cd -
-# cd "$ext_soft/9fansgo/acme/acmego"; $ext_soft/go/bin/go install; cd -
+cd "$ext_soft/9fansgo/acme/Watch"; runuser -u $user -- $ext_soft/go/bin/go install -buildvcs=false; cd -
+# cd "$ext_soft/9fansgo/acme/acmego"; runuser -u $user -- $ext_soft/go/bin/go install; cd -
 read -p "[INFO]: pulled 9fans/go and installed wanted programs - Press enter to continue" _
 
 git clone https://github.com/9wm/9wm.git "$ext_soft/9wm"
@@ -55,7 +55,7 @@ read -p "[INFO]: pulled 9wm and ran make - Press enter to continue" _
 
 git clone https://github.com/arnoldrobbins/9menu.git "$ext_soft/9menu"
 cd "$ext_soft/9menu"; make 9menu; cd -
-ln -s ${molecurrent_path}/9wm.cmds "$ext_soft/9menu"
+ln -s ${molecurrent_path}/9menu.cmds "$ext_soft/9menu"
 read -p "[INFO]: pulled 9menu and ran make - Press enter to continue" _
 
 runuser -u $user -- test -e "/home/$user/.bashrc" && mv /home/$user/.bashrc /home/$user/.bashrc.orig
@@ -74,7 +74,7 @@ runuser -u $user -- ln -s $(pwd)/.config/sxhkd/* /home/$user/.config/sxhkd/
 read -p "[INFO]: symlinks for config files done - Press enter to continue" _
 
 # doas setup
-printf "permit nopass ${user} as root cmd /usr/sbin/reboot\npermit nopass ${user} as root cmd /usr/sbin/shutdown\npermit nopass ${user} as root cmd /usr/sbin/dhclient\npermit ${user} as root" > /etc/doas.conf
+printf "permit nopass ${user} as root cmd /usr/sbin/reboot\npermit nopass ${user} as root cmd /usr/sbin/shutdown\npermit nopass ${user} as root cmd /usr/sbin/dhclient\npermit ${user} as root\n" > /etc/doas.conf
 read -p "[INFO]: doas configuration done - Press enter to continue" _
 
 # allow user to change brightness
