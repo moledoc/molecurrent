@@ -8,8 +8,7 @@ test "root" != "$(whoami)" && echo "run script as root" && exit 1
 user=$(ls /home | tr -d '/')
 
 self_soft=/usr/local
-# TODO: use /usr/local for ext_soft as well? some programs use /usr/local for example
-ext_soft=/opt
+ext_soft=/usr/local
 
 apt update && apt upgrade
 apt install --fix-missing -y xorg xterm build-essential libx11-dev libxext-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev xdotool libxrandr-dev xautolock xinput xclip parallel doas rfkill curl network-manager git chromium sxhkd fuse3 ntfs-3g alsa-utils vlc dunst keepassxc spacefm-gtk3 gnome-backgrounds feh flameshot okular
