@@ -3,7 +3,7 @@ export BRIGHTNESS_STEP=$(test -n "$MAX_BRIGHTNESS" && printf $(($MAX_BRIGHTNESS/
 export WM=9wm
 export BROWSER=chromium
 export TERM=xterm
-export PLAN9=/usr/local/plan9
-export PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/usr/local/go/bin:$PLAN9/bin:$HOME/go/bin
+export PLAN9=/opt/plan9
+export PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/opt/go/bin:$PLAN9/bin:$HOME/go/bin
 
 eval $(ssh-agent -s)

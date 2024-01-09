@@ -17,4 +17,4 @@ feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 # printf "$(($MAX_BRIGHTNESS/2))\n" > /sys/class/backlight/intel_backlight/brightness # TODO:
 natural-scrolling.sh &
 
-exec /usr/local/9wm/9wm
+exec /opt/9wm/9wm
