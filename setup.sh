@@ -1,5 +1,8 @@
 !/bin/sh
 
+# TODO: running as root creates permission problems,
+# 	perhaps can use another approach
+
 set -xe
 
 vm=$(test "$1" = "vm" | printf "$1")
