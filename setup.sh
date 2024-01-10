@@ -40,7 +40,7 @@ git clone https://github.com/9fans/plan9port.git "${ext_soft}/plan9"
 cd "${ext_soft}/plan9/src/cmd/acme"; patch text.c ${molecurrent_path}/.patches/acme_text.patch; cd -
 cd "${ext_soft}/plan9"; ./INSTALL; cd -
 cd "${ext_soft}/plan9/bin"; patch web ${molecurrent_path}/.patches/plan9-bin-web.patch; cd -
-read -p "[INFO]: pulled 9fans/plan9ports and ran installation - Press enter to continue" _
+read -p "[INFO]: pulled 9fans/plan9ports, patched acme and ran installation - Press enter to continue" _
 
 git clone https://github.com/9fans/go.git "${ext_soft}/9fansgo"
 cd "${ext_soft}/9fansgo/acme/Watch"; runuser -u ${user} -- ${ext_soft}/go/bin/go install -buildvcs=false; cd -
@@ -48,8 +48,11 @@ cd "${ext_soft}/9fansgo/acme/Watch"; runuser -u ${user} -- ${ext_soft}/go/bin/go
 read -p "[INFO]: pulled 9fans/go and installed wanted programs - Press enter to continue" _
 
 git clone https://github.com/9wm/9wm.git "${ext_soft}/9wm"
-cd "${ext_soft}/9wm"; make install; cd -
-read -p "[INFO]: pulled 9wm and ran make - Press enter to continue" _
+cd "${ext_soft}/9wm"
+git apply --ignore-whitespace --ignore-space-change ${molecurrent_path}/.patches/9wm.patch
+make install
+cd -
+read -p "[INFO]: pulled, patched and installed 9wm - Press enter to continue" _
 
 git clone https://github.com/arnoldrobbins/9menu.git "${ext_soft}/9menu"
 cd "${ext_soft}/9menu"; make 9menu; cd -
