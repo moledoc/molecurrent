@@ -32,24 +32,25 @@ index 7dd2e69..139e0e6 100644
  extern int		num_screens;
  extern int		initting;
 diff --git a/event.c b/event.c
-index 85a1c27..1de71bc 100644
+index 85a1c27..693fc84 100644
 --- a/event.c
 +++ b/event.c
-@@ -18,6 +18,7 @@ mainloop(int shape_event)
+@@ -18,7 +18,9 @@ mainloop(int shape_event)
  	XEvent ev;
  
  	for (;;) {
 +		XGrabKey(dpy, AnyKey, Mod1Mask, DefaultRootWindow(dpy), False, GrabModeAsync, GrabModeAsync);
  		getevent(&ev);
++		XUngrabKey(dpy, AnyKey, Mod1Mask, DefaultRootWindow(dpy));
  
  #ifdef	DEBUG_EV
-@@ -35,6 +36,12 @@ mainloop(int shape_event)
+ 		if (debug) {
+@@ -35,6 +37,11 @@ mainloop(int shape_event)
  #endif
  				fprintf(stderr, "9wm: unknown ev.type %d\n", ev.type);
  			break;
 +		case KeyPress:
 +			key(&ev.xkey);
-+			XUngrabKey(dpy, AnyKey, Mod1Mask, DefaultRootWindow(dpy));
 +			break;
 +		case KeyRelease:
 +			break;
