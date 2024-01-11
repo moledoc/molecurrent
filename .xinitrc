@@ -11,6 +11,7 @@ XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_FONT=DejaVuSans xautolock -time
 dunst &
 playerctld &
 low-battery.sh &
+nohup flameshot &
 
 # set states
 feh --recursive --bg-fill --randomize /usr/share/backgrounds &
