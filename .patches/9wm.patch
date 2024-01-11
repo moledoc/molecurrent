@@ -97,7 +97,7 @@ index d3ead2d..f61f6c2 100644
  void	reshape();
  void	move();
 diff --git a/menu.c b/menu.c
-index 5734b30..448f1d8 100644
+index 5734b30..104b160 100644
 --- a/menu.c
 +++ b/menu.c
 @@ -16,6 +16,7 @@
@@ -135,14 +135,14 @@ index 5734b30..448f1d8 100644
 +			if ((e->state & (Mod1Mask | ShiftMask)) == (Mod1Mask | ShiftMask)) {
 +				unhide(0,1); /* alt+shift+tab unhides clients */
 +			} else if ((e->state & Mod1Mask) == Mod1Mask) {
-+				if (numvisible <= 2 && numhidden == 0) { /* if <=1 window visible - do nothing */
-+				} else if (current == 0) {
-+					unhide(numhidden-1, 1);
-+				} else if (numvisible == 2) { /* create client adds to numvisible; init creates 2 clients */
++				if(numvisible > 2) { /* more than 1 visible */
++					hide(current);
++				} else if (numvisible <= 2 && numhidden == 0) { /* at most 1 visible and no hidding, do nothing */
++				} else if (numvisible == 2 && numhidden > 0) { /* one visible and at least some hiding */
 +					hide(current);
 +					unhide(numhidden-1, 1);
-+				} else {
-+					hide(current);
++				} else if (numvisible < 2 && numhidden > 0) { /* no visible and at least some hiding */
++					unhide(numhidden-1, 1);
 +				}
 +			}
 +			if (current && current->screen == s)
