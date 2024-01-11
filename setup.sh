@@ -11,7 +11,7 @@ self_soft=/usr/local
 ext_soft=/opt
 
 apt update && apt upgrade
-apt install --fix-missing -y xorg xterm build-essential libx11-dev libxext-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev xdotool libxrandr-dev xautolock xinput xclip parallel doas rfkill curl network-manager git chromium sxhkd fuse3 ntfs-3g alsa-utils vlc dunst keepassxc spacefm-gtk3 gnome-backgrounds feh flameshot okular
+apt install --fix-missing -y xorg xterm build-essential libx11-dev libxext-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev xdotool libxrandr-dev xautolock xinput xclip parallel doas rfkill curl network-manager git chromium sxhkd fuse3 ntfs-3g alsa-utils vlc dunst keepassxc spacefm-gtk3 gnome-backgrounds feh flameshot okular fzf
 # pandoc texlive-full <- optional package
 read -p "[INFO]: installation of packages done - Press enter to continue" _
 
