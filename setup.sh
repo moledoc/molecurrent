@@ -98,8 +98,8 @@ cd /home/${user}/Documents/gh_bu/b64; cc -o ${self_soft}/bin/b64 b64.c; cd -
 read -p "[INFO]: moledoc repos backed up and self soft compiled - Press enter to continue" _
 
 cd ${ext_soft}; chown -R ${user}:${user} *; cd -
-cd ${self_soft}/bin; chown -R ${user}:${user} *; cd -
-read -p "[INFO]: ${ext_soft} and ${self_soft}/bin ownership transferred to ${user} - Press enter to continue" _
+cd ${self_soft}/bin; chown -R ${user}:${user} * && chmod +x *; cd -
+read -p "[INFO]: ${ext_soft} and ${self_soft}/bin ownership transferred to ${user}; ${self_soft}/bin/* made into executables - Press enter to continue" _
 
 read -p "[INFO]: setup done - Press enter to reboot" _
 /usr/sbin/reboot
