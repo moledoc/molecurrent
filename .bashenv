@@ -1,7 +1,7 @@
 export MAX_BRIGHTNESS=$(cat /sys/class/backlight/*/max_brightness)
 export BRIGHTNESS_STEP=$(test -n "$MAX_BRIGHTNESS" && printf $(($MAX_BRIGHTNESS/50)) || printf "100")
 export WM=9wm
-export BROWSER=chromium
+export BROWSER="chromium --enable-blink-features=MiddleClickAutoScroll"
 export TERM=xterm
 export PLAN9=/opt/plan9
 export PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/opt/go/bin:$PLAN9/bin:$HOME/go/bin
