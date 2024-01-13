@@ -1,12 +1,10 @@
 
 # molecurrent
 
-The current setup I'm exploring.
+This particular setup is meant to be more mouse-based/-centric and has a lot of influences from plan9.
 
-This particular setup is meant to be more mouse-based/-centric.
-It has gradually become plan9 influenced.
 I do enjoy the simplicity of this build.
-Will see how it works out in the long run
+I've hacked around in some programs to add minor features that I was missing or to enable some features already present, but not accessible.
 
 ## setup 
 
@@ -18,33 +16,32 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-**NB!** If any problems with wifi, check the help sections below.
-
 ## Programs
 
 * window manager - 9wm
 * web browser - chromium
 * text editor - acme/vi
 * terminal - xterm or any other default one
-* file manager - spacefm
-	* alt to terminal file manager - acme
+* file manager - spacefm/acme
 * keyboard shortcuts - sxhkd
+	* volume
+	* brightness
+	* term
+	* keyboard language switch
+	* (could use for other things, but want to force 9menu usage)
 * notifications - dunst
 * lockscreen - xsecurelock
 * autolocker - xautolock
-* wifi - nmtui , (also useful wpa_gui, wpa_supplicant and nmcli)
+* wifi - nmtui (also useful wpa_gui, wpa_supplicant and nmcli)
 * screenshots - flameshot
 * media player - vlc
 * pdf viewer - okular
 * image viewer - feh (also sets the background)
 * bluetooth - bluetoothctl
 
-## TODO:
+## Helpful material
 
-- improve readme
-- improve acme setup. I read somewhere that there is a setup script that does everything that's needed. Currently I'm kind of doing it manually in my scripts.
-
-## Bluetooth
+### Bluetooth
 
 This article was very helpful: `https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/`
 
@@ -62,9 +59,9 @@ bluetoothctl remove <device address>
 bluetoothctl block <device address>
 ```
 
-## Wifi issues
+### Wifi issues
 
-### Every reboot/coming out of sleep - no wifi
+Every reboot/coming out of sleep - no wifi
 
 Haven't figured out the root cause, but running `dhclient` seems to help.
 
@@ -80,13 +77,13 @@ Another thing that might help is ([source](https://www.linuxquestions.org/questi
 wpa_passphrase ${ssid} ${password} | doas tee /etc/wpa_supplicant/${ssid}.conf
 ```
 
-### Setting up
+#### Older help
 
-(copied from moledebian\_min)
+copied from moledebian\_min
 
 I had some issues with wifi. Made 2 sections: one for quick commands and second to expand on those commands and actions.
 
-### TLDR;
+##### TLDR;
 
 * [get iso w/ non-free drivers](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.4.0+nonfree/amd64/iso-cd/)
 * [get tarbal](https://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/20220801/firmware.tar.gz) and extract it to `/firmware/` on a separate USB
@@ -101,7 +98,7 @@ I had some issues with wifi. Made 2 sections: one for quick commands and second 
 % nmcli --ask dev wifi connect <WifiName>
 ```
 
-### With some comments
+##### With some comments
 
 * [helpful article](https://linuxhint.com/remove_characters_string_bash/)
 

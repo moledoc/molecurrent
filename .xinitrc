@@ -19,6 +19,5 @@ nohup flameshot &
 
 # set states
 feh --recursive --bg-fill --randomize /usr/share/backgrounds &
-# printf "$(($MAX_BRIGHTNESS/2))\n" > /sys/class/backlight/intel_backlight/brightness # TODO:
 
 exec /opt/9wm/9wm
