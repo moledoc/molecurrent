@@ -5,5 +5,7 @@ export BROWSER="chromium --enable-blink-features=MiddleClickAutoScroll"
 export TERM=xterm
 export PLAN9=/opt/plan9
 export PATH=$PATH:/sbin:/usr/sbin:/usr/bin:/opt/go/bin:$PLAN9/bin:$HOME/go/bin
+export XSECURELOCK_PASSWORD_PROMPT=time_hex
+export XSECURELOCK_FONT=DejaVuSansMono
 
 eval $(ssh-agent -s)

@@ -1,21 +1,12 @@
-Launcher:launcher.sh
-Terminal:x-terminal-emulator
-Browser:x-www-browser
-Top:xterm -e "top"
-Files:spacefm
-Acme:start-acme.sh
-Screenshot:flameshot gui
-Keepass:keepassxc
-Status:datetime.sh;battery.sh
-Datetime:datetime.sh
-Battery:battery.sh
-Wifi:xterm -e "nmtui"
-Reset Wifi:xterm -e reset_wifi.sh
-Wifi CLI:xterm -e "wifi.sh"
-Shortcuts:xterm -e "cat $HOME/.config/sxhkd/sxhkdrc | vi -"
-Wallpaper:xdotool key ctrl+alt+w+p
-Restart sxhkd:xdotool key super+k+r
-Lock:xdotool key super+l
-Logout:kill -9 $(pgrep -x 9wm)
-Restart:/opt/9menu/9menu -popup no:"echo no" yes:/usr/sbin/reboot
-Shutdown:/opt/9menu/9menu -popup no:"echo no" yes:"/usr/sbin/shutdown now"
+launch:launcher.sh
+term:x-terminal-emulator
+status:status.sh
+browser:x-www-browser
+files:spacefm
+acme:start-acme.sh
+snip:flameshot gui
+lock:xsecurelock
+logout:kill -9 $(pgrep -x "$WM")
+restart:/opt/9menu/9menu -popup no:"echo no" yes:/usr/sbin/reboot
+shutdown:/opt/9menu/9menu -popup no:"echo no" yes:"/usr/sbin/shutdown now"
+misc:/opt/9menu/9menu -popup Wallpaper:"feh --recursive --bg-fill --randomize /usr/share/backgrounds" RestartSxhkd:"sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd" TaskManager:"xterm -e \"top\"" Wifi:"xterm -e \"nmtui\""
