@@ -1,0 +1,116 @@
+diff --git a/9wm.c b/9wm.c
+index 08e0b00..0c37fe6 100644
+--- a/9wm.c
++++ b/9wm.c
+@@ -20,6 +20,7 @@ char *version[] = {
+ };
+ 
+ Display *dpy;
++unsigned tab;
+ ScreenInfo *screens;
+ int initting;
+ XFontStruct *font;
+@@ -168,6 +169,8 @@ main(int argc, char *argv[])
+ 	if (dpy == 0)
+ 		fatal("can't open display");
+ 
++	tab = XKeysymToKeycode(dpy, XK_Tab);
++
+ 	initting = 1;
+ 	XSetErrorHandler(handler);
+ 	if (signal(SIGTERM, sighandler) == SIG_IGN)
+diff --git a/dat.h b/dat.h
+index 7dd2e69..139e0e6 100644
+--- a/dat.h
++++ b/dat.h
+@@ -97,6 +97,7 @@ enum {
+ 
+ /* main.c */
+ extern Display		*dpy;
++extern unsigned		tab;
+ extern ScreenInfo	*screens;
+ extern int		num_screens;
+ extern int		initting;
+diff --git a/event.c b/event.c
+index 85a1c27..693fc84 100644
+--- a/event.c
++++ b/event.c
+@@ -18,7 +18,9 @@ mainloop(int shape_event)
+ 	XEvent ev;
+ 
+ 	for (;;) {
++		XGrabKey(dpy, AnyKey, Mod1Mask, DefaultRootWindow(dpy), False, GrabModeAsync, GrabModeAsync);
+ 		getevent(&ev);
++		XUngrabKey(dpy, AnyKey, Mod1Mask, DefaultRootWindow(dpy));
+ 
+ #ifdef	DEBUG_EV
+ 		if (debug) {
+@@ -35,6 +37,11 @@ mainloop(int shape_event)
+ #endif
+ 				fprintf(stderr, "9wm: unknown ev.type %d\n", ev.type);
+ 			break;
++		case KeyPress:
++			key(&ev.xkey);
++			break;
++		case KeyRelease:
++			break;
+ 		case ButtonPress:
+ 			button(&ev.xbutton);
+ 			break;
+diff --git a/fns.h b/fns.h
+index d3ead2d..f61f6c2 100644
+--- a/fns.h
++++ b/fns.h
+@@ -56,6 +56,7 @@ void	gettrans();
+ 
+ /* menu.c */
+ void	button();
++void	key();
+ void	spawn();
+ void	reshape();
+ void	move();
+diff --git a/menu.c b/menu.c
+index 5734b30..8718759 100644
+--- a/menu.c
++++ b/menu.c
+@@ -103,6 +103,40 @@ button(XButtonEvent * e)
+ 		cmapfocus(current);
+ }
+ 
++void
++key(XKeyEvent * e)
++{
++	Client *c;
++	Window dw;
++	ScreenInfo *s;
++
++	curtime = e->time;
++	s = getscreen(e->root);
++	if (s == 0)
++		return;
++	c = getclient(e->window, 0);
++	if (c) {
++		e->x += c->x - BORDER + 1;
++		e->y += c->y - BORDER + 1;
++	} else if (e->window != e->root)
++		XTranslateCoordinates(dpy, e->window, s->root, e->x, e->y, &e->x, &e->y, &dw);
++
++	if (e->keycode == tab) {
++		if ((e->state & (Mod1Mask | ShiftMask)) == (Mod1Mask | ShiftMask)) {
++			unhide(0,1);
++		} else if ((e->state & Mod1Mask) == Mod1Mask) {
++			hide(current);
++		}
++		if (current && current->screen == s)
++			cmapfocus(current);
++		if (!current) {
++			if (numhidden > 1) {
++				unhide(numhidden-1, 1);
++			}
++		}
++	}
++}
++
+ void
+ spawn(ScreenInfo * s, char *prog)
+ {

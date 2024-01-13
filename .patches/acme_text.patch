@@ -1,0 +1,29 @@
+763c763,764
+< 	case Kcmd+'c':	/* %C: copy */
+---
+> 	// case Kcmd+'c':	/* %C: copy */
+> 	case 0x02:	/* ^B: copy - conflict with ^C (cancel)*/
+767c768,769
+< 	case Kcmd+'z':	/* %Z: undo */
+---
+> 	// case Kcmd+'z':	/* %Z: undo */
+> 	case 0x1a:	/* ^Z: undo */
+771c773,774
+< 	case Kcmd+'Z':	/* %-shift-Z: redo */
+---
+> 	// case Kcmd+'Z':	/* %-shift-Z: redo */
+> 	case 0x19:	/* ^Y */
+799c802,803
+< 	case Kcmd+'x':	/* %X: cut */
+---
+> 	// case Kcmd+'x':	/* %X: cut */
+> 	case 0x18:	/* ^X: cut */
+809c813,814
+< 	case Kcmd+'v':	/* %V: paste */
+---
+> 	// case Kcmd+'v':	/* %V: paste */
+> 	case 0x16:	/* ^V: paste */
+836c841
+< 	case 0x1B:
+---
+> 	case 0x1B: // esc

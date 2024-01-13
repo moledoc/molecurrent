@@ -34,65 +34,6 @@ super + Return
 ctrl + alt + t
 	$TERM
 
-# browser
-super + b
-	$BROWSER
-
 # langs
 super + space
 	toggle-lang.sh
-
-# show status: datetime and battery
-super + s
-	datetime.sh && battery.sh
-
-# show datetime
-alt + d
-	datetime.sh
-
-# show battery
-alt + b
-	battery.sh
-
-# lock screen
-super + l
-	XSECURELOCK_PASSWORD_PROMPT=time_hex XSECURELOCK_FONT=DejaVuSans xsecurelock
-
-## screenshot
-#Print
-#	 flameshot launcher
-
-# file explorer
-super + e
-	spacefm
-
-# change wallpaper
-ctrl + alt + w + p
-	feh --recursive --bg-fill --randomize /usr/share/backgrounds &
-
-# restart sxhkd
-super + k + r
-	sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd &
-
-# logout
-ctrl + alt + o + l
-	kill -9 $(pgrep -x "$WM")
-
-# reboot
-ctrl + alt + s + r
-	reboot
-
-# shutdown
-ctrl + alt + s + q
-	shutdown now
-
-# menu
-super + button3
-	menu.sh
-
-# run launcher
-super + p
-	launcher
-
-ctrl + shift + Escape
-	$TERM -e "top"
