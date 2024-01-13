@@ -1,3 +1,0 @@
-#!/bin/sh
-xterm -e "echo \"$PATH\" | tr \":\" \"\n\" | parallel ls | fzf -i --no-color> /tmp/launch"
-$(cat /tmp/launch)

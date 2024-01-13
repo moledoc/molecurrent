@@ -1,4 +1,0 @@
-#!/bin/bash
-old=$(xclip -o -selection clipboard)
-read -s pp && printf "$pp" | b64 e | xclip -selection clipboard
-sleep 10 && printf "$old" | xclip -selection clipboard &

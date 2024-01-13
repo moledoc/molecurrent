@@ -1,4 +1,4 @@
-Launcher:launcher
+Launcher:launcher.sh
 Terminal:x-terminal-emulator
 Browser:x-www-browser
 Top:xterm -e "top"
