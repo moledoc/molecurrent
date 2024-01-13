@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 set -xe
 
@@ -30,7 +30,7 @@ runuser -u "${user}" -- git remote set-url origin git@github.com:moledoc/molecur
 ln -s $(pwd)/bin/* "${self_soft}/bin/"
 read -p "[INFO]: pulling molecurrent repo done - Press enter to continue" _
 
-go_version=$(curl https://go.dev/dl/ | grep "class="download downloadBox\".*\.linux-amd64" | grep -o "go.*linux-amd64.tar.gz")
+go_version=$(curl https://go.dev/dl/ | grep "class=\"download downloadBox\".*\.linux-amd64" | grep -o "go.*linux-amd64.tar.gz")
 wget https://go.dev/dl/$go_version
 rm -rf "${ext_soft}/go" && tar -C "${ext_soft}" -xzf $go_version
 rm $go_version
@@ -84,7 +84,7 @@ usermod -a -G video ${user}
 read -p "[INFO]: laptop brightness configuration done - Press enter to continue" _
 
 # make apt colorless
-printf 'Binary::apt::DPkg::Progress-Fancy "false";nBinary::apt::APT::Color "false";' > /etc/apt/apt.conf.d/99nocolor
+printf 'Binary::apt::DPkg::Progress-Fancy "false";\nBinary::apt::APT::Color "false";' > /etc/apt/apt.conf.d/99nocolor
 read -p "[INFO]: apt configuration done - Press enter to continue" _
 
 runuser -u ${user} -- mkdir /home/${user}/.ssh
