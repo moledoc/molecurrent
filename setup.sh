@@ -95,6 +95,7 @@ runuser -u "${user}" -- ${molecurrent_path}/bin/gh_bu.sh ${user} moledoc
 cd /home/${user}/Documents/gh_bu/calc; cc -o ${self_soft}/bin/calc calc.c; cd -
 cd /home/${user}/Documents/gh_bu/walk; cc -o ${self_soft}/bin/walk walk.c; cd -
 cd /home/${user}/Documents/gh_bu/b64; cc -o ${self_soft}/bin/b64 b64.c; cd -
+cd /home/${user}/Documents/gh_bu/pw; cc -o ${self_soft}/bin/pw pw.c; cd -
 read -p "[INFO]: moledoc repos backed up and self soft compiled - Press enter to continue" _
 
 cd ${ext_soft}; chown -R ${user}:${user} *; cd -
