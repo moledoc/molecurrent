@@ -59,6 +59,11 @@ cd "${ext_soft}/9menu"; make 9menu; cd -
 ln -s ${molecurrent_path}/9menu.cmds "${ext_soft}/9menu"
 read -p "[INFO]: pulled 9menu and ran make - Press enter to continue" _
 
+GO111MODULE=on go install github.com/fhs/acme-lsp/cmd/acme-lsp@latest
+GO111MODULE=on go install github.com/fhs/acme-lsp/cmd/L@latest
+GO111MODULE=on go install golang.org/x/tools/gopls@latest
+read -p "[INFO]: go lsp for acme installed - Press enter to continue" _
+
 runuser -u ${user} -- test -e "/home/${user}/.bashrc" && mv /home/${user}/.bashrc /home/${user}/.bashrc.orig
 runuser -u ${user} -- test -e "/home/${user}/.bashenv" && mv /home/${user}/.bashenv /home/${user}/.bashenv.orig
 runuser -u ${user} -- test -e "/home/${user}/.bash_profile" && mv /home/${user}/.bash_profile /home/${user}/.bash_profile.orig
