@@ -2,9 +2,9 @@
 XF86AudioMute
 	sound.sh "toggle"
 XF86AudioRaiseVolume
-	sound.sh "5%+"
+	sound.sh "2%+"
 XF86AudioLowerVolume
-	sound.sh "5%-"
+	sound.sh "2%-"
 XF86AudioPlay
 	playerctl play-pause
 XF86AudioNext

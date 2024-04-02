@@ -9,4 +9,4 @@ lock:xsecurelock
 logout:kill -9 $(pgrep -x "$WM")
 restart:/opt/9menu/9menu -popup no:"echo no" yes:/usr/sbin/reboot
 shutdown:/opt/9menu/9menu -popup no:"echo no" yes:"/usr/sbin/shutdown now"
-misc:/opt/9menu/9menu -popup Wallpaper:"feh --recursive --bg-fill --randomize /usr/share/backgrounds" RestartSxhkd:"sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID && sxhkd" TaskManager:"xterm -e \"top\"" Wifi:"xterm -e \"nmtui\""
+misc:/opt/9menu/9menu -popup Wallpaper:"feh --recursive --bg-fill --randomize /usr/share/backgrounds" RestartSxhkd:"sxhkdPID=$(pgrep -x sxhkd); test $sxhkdPID && kill -9 $sxhkdPID; sxhkd &" TaskManager:"xterm -e \"top\"" Wifi:"xterm -e \"nmtui\""
