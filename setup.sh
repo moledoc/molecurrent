@@ -64,6 +64,10 @@ GO111MODULE=on go install github.com/fhs/acme-lsp/cmd/L@latest
 GO111MODULE=on go install golang.org/x/tools/gopls@latest
 read -p "[INFO]: go lsp for acme installed - Press enter to continue" _
 
+git clone --depth=1 https://github.com/Simatwa/y2mate-api.git $HOME/y2mate-api
+cd $HOME/y2mate-api; python3 -m venv .; cd -
+read -p "[INFO]: y2mate-api installed - Press enter to continue" _
+
 runuser -u ${user} -- test -e "/home/${user}/.bashrc" && mv /home/${user}/.bashrc /home/${user}/.bashrc.orig
 runuser -u ${user} -- test -e "/home/${user}/.bashenv" && mv /home/${user}/.bashenv /home/${user}/.bashenv.orig
 runuser -u ${user} -- test -e "/home/${user}/.bash_profile" && mv /home/${user}/.bash_profile /home/${user}/.bash_profile.orig
@@ -101,7 +105,10 @@ cd /home/${user}/Documents/gh_bu/calc; cc -o ${self_soft}/bin/calc calc.c; cd -
 cd /home/${user}/Documents/gh_bu/walk; cc -o ${self_soft}/bin/walk walk.c; cd -
 cd /home/${user}/Documents/gh_bu/b64; cc -o ${self_soft}/bin/b64 b64.c; cd -
 cd /home/${user}/Documents/gh_bu/pw; cc -o ${self_soft}/bin/pw pw.c; cd -
-read -p "[INFO]: moledoc repos backed up and self soft compiled - Press enter to continue" _
+
+cd /home/${user}/Documents/gh_bu/av; ${ext_soft}/go/bin/go install; cd -
+cd /home/${user}/Documents/gh_bu/ytf; ${ext_soft}/go/bin/go install ytfd.go; cc -o ${self_soft}/bin/ytf ytf.c; cd -
+read -p "[INFO]: moledoc repos backed up and self software compiled - Press enter to continue" _
 
 cd ${ext_soft}; chown -R ${user}:${user} *; cd -
 cd ${self_soft}/bin; chown -R ${user}:${user} * && chmod +x *; cd -

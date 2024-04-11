@@ -1,0 +1,3 @@
+#!/bin/sh
+
+y2mate -f mp4 -d $HOME/Videos "$1"

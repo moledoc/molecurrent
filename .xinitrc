@@ -20,4 +20,10 @@ nohup flameshot &
 # set states
 feh --recursive --bg-fill --randomize /usr/share/backgrounds &
 
+# local services
+## av
+av -v -d="$HOME/Music" -ffmpeg &
+## ytf
+ytfd -subs="$HOME/.yt.subs" -refrate=15 -notify &
+
 exec /opt/9wm/9wm
