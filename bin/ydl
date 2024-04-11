@@ -1,3 +1,4 @@
 #!/bin/sh
 
-y2mate -f mp4 -d $HOME/Videos "$1"
+test -d $HOME/Videos/WatchLater || mkdir -p $HOME/Videos/WatchLater
+y2mate -f mp4 -d $HOME/Videos/WatchLater "$1"

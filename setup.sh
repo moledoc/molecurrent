@@ -65,7 +65,7 @@ GO111MODULE=on go install golang.org/x/tools/gopls@latest
 read -p "[INFO]: go lsp for acme installed - Press enter to continue" _
 
 git clone --depth=1 https://github.com/Simatwa/y2mate-api.git $HOME/y2mate-api
-cd $HOME/y2mate-api; python3 -m venv .; cd -
+cd $HOME/y2mate-api; python3 -m venv .venv; ./venv/bin/python3 -m pip install .; cd -
 read -p "[INFO]: y2mate-api installed - Press enter to continue" _
 
 runuser -u ${user} -- test -e "/home/${user}/.bashrc" && mv /home/${user}/.bashrc /home/${user}/.bashrc.orig
