@@ -1,0 +1,2 @@
+#!/bin/sh
+$TERM -e "bluetoothctl devices Paired | fzf | awk '{print $2}' | xargs -I {} bluetoothctl connect \"{}\""
