@@ -84,6 +84,7 @@ runuser -u ${user} -- ln -s $(pwd)/.config/sxhkd/* /home/${user}/.config/sxhkd/
 
 runuser -u ${user} -- mkdir -p /home/${user}/.config/acme-lsp
 runuser -u ${user} -- ln -s $(pwd)/.config/acme-lsp/* /home/${user}/.config/acme-lsp/
+runuser -u ${user} -- ln -s $(pwd)/.config/haikyu.png /home/${user}/.config/haikyu.png
 read -p "[INFO]: symlinks for config files done - Press enter to continue" _
 
 # doas setup

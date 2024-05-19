@@ -18,7 +18,8 @@ low-battery.sh &
 nohup flameshot &
 
 # set states
-feh --recursive --bg-fill --randomize /usr/share/backgrounds &
+# feh --recursive --bg-fill --randomize /usr/share/backgrounds &
+feh --bg-fill /home/utt/.config/haikyu.png &
 
 # local services
 ## av
