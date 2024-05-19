@@ -11,7 +11,7 @@ self_soft=/usr/local
 ext_soft=/opt
 
 apt update && apt upgrade
-apt install --fix-missing -y xorg xterm build-essential libx11-dev libxext-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev xdotool libxrandr-dev xautolock xsecurelock xinput xclip parallel doas rfkill curl network-manager git chromium sxhkd fuse3 ntfs-3g alsa-utils vlc dunst keepassxc spacefm-gtk3 gnome-backgrounds feh flameshot okular fzf
+apt install --fix-missing -y xorg xterm build-essential libx11-dev libxext-dev libxt-dev libfontconfig1-dev libxtst-dev libxinerama-dev libxft-dev xdotool libxrandr-dev xautolock xsecurelock xinput xclip parallel doas rfkill curl network-manager git chromium sxhkd fuse3 ntfs-3g alsa-utils vlc dunst keepassxc spacefm-gtk3 gnome-backgrounds feh flameshot okular fzf ccls
 # pandoc texlive-full <- optional package
 read -p "[INFO]: installation of packages done - Press enter to continue" _
 
@@ -81,6 +81,9 @@ runuser -u ${user} -- ln -s ${molecurrent_path}/.xinitrc /home/${user}/.xinitrc
 runuser -u ${user} -- ln -s ${molecurrent_path}/.Xresources /home/${user}/.Xresources
 runuser -u ${user} -- mkdir -p /home/${user}/.config/sxhkd
 runuser -u ${user} -- ln -s $(pwd)/.config/sxhkd/* /home/${user}/.config/sxhkd/
+
+runuser -u ${user} -- mkdir -p /home/${user}/.config/acme-lsp
+runuser -u ${user} -- ln -s $(pwd)/.config/acme-lsp/* /home/${user}/.config/acme-lsp/
 read -p "[INFO]: symlinks for config files done - Press enter to continue" _
 
 # doas setup
