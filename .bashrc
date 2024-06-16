@@ -2,6 +2,7 @@
 alias ls="ls -F"
 alias dir="dir -F"
 alias vdir="vdir -F"
+alias htop="htop --no-color"
 alias acme="start-acme.sh &"
 
 # push some dirs for `dirs`
