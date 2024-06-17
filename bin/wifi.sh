@@ -7,3 +7,14 @@ test -z is_known && nmcli device wifi connect "$ssid" password $(fzf -p "Passwor
 test -n is_known && nmcli device wifi connect "$ssid"
 status=$(nmcli device wifi list | grep "*")
 dunstify -a "changeWifi" -u low -h string:x-dunst-stack-tag:$msgTag "Connected to $ssid"
+
+# if bluetoothctl gives: Bluetoothctl: No default controller available, despite being unblocked
+# then the following helped me (as root)
+# ```sh
+# rmmod btusb
+# rmmod btintel
+# 
+# modprobe btintel
+# modprobe btusb
+# ```
+# source: https://unix.stackexchange.com/questions/169931/bluetoothctl-no-default-controller-available-despite-being-unblocked
