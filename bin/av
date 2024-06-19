@@ -1,0 +1,10 @@
+#!/bin/sh
+
+html=$(curl -s "http://localhost:8080")
+test -z "${html}" && exit 1
+name=$(printf "%s" "${html}" | 9 grep ">[a-zA-Z0-9._\-\ \t\[\]()]*\.mp3<\/a>" | 9 sed 's/.*>([a-zA-Z0-9._\-\ \t\[\]()]*\.mp3)<\/a>/\1/g' | fzf)
+test -z "${name}" && exit 0
+name=$(echo "${name}" | 9 sed 's/\[/\\[/g' | 9 sed 's/\]/\\]/g')
+route=$(printf "%s" "${html}" | grep ">${name}<" | 9 sed 's/.*<a href=\"([a-zA-Z0-9._\-%\t\[\]()]*\.mp3)".*/\1/g')
+test -z "${route}" && exit 1
+mpv --loop=inf "http://localhost:8080/${route}"
