@@ -9,6 +9,10 @@ HideDiagnostics = true
 FormatOnPut = true
 RPCTrace = false
 
+
+WorkspaceDirectories = [
+]
+
 [Servers]
 	[Servers.gopls]
 	Command = ["gopls", "serve", "-rpc.trace"]
@@ -20,11 +24,21 @@ RPCTrace = false
 		hoverKind = "FullDocumentation"
 
 	[Servers.ccls]
-		Command = [
-			"ccls",
-		]
-		StderrFile = "ccls.stderr.log"
-		LogFile = "ccls.log"
+# if ccls doesn't work, try to
+# * add -I -D etc to .ccls file as well as to clang.extraArgs
+# * add project path to WorkspaceDirectories
+# don't know why it's like that, my guess is it's something to do with compilation
+# as I didn't encounter this issue with non-pre-processor c files.
+	Command = [
+		"ccls",
+		"-v=2",
+
+		# clang.extraArgs from 'clang -v -fsyntax-only -x c++ /dev/null'
+		# clang.resourceDir from 'clang -print-resource-dir'
+		"--init={\"cache\":{\"directory\":\"$HOME/.cache/ccls\"},\"highlight\":{\"enabled\":true},\"clang\": {\"extraArgs\": [\"-isystem\", \"/usr/lib/llvm-14/lib/clang/14.0.6/include\", \"-isystem\", \"/usr/local/include\", \"-isystem\", \"/usr/include/x86_64-linux-gnu\", \"-isystem\", \"/usr/include\"], \"resourceDir\": \"/usr/lib/llvm-14/lib/clang/14.0.6\"},\"completion\":{\"detailedLabel\":false}}"
+	]
+	StderrFile = "ccls.stderr.log"
+	LogFile = "ccls.log"
 
 [[FilenameHandlers]]
 Pattern = '([/\\]go\.mod)|([/\\]go\.sum)|(\.go)$'
@@ -33,4 +47,3 @@ ServerKey = "gopls"
 [[FilenameHandlers]]
 Pattern = '(\.h)|(\.c)|(\.cpp)|(\.cc)|(\.def)$'
 ServerKey = "ccls"
-
